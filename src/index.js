@@ -1,5 +1,7 @@
-import MSDFGlyphGeometry from './MSDFGlyphGeometry.js'
+import GlyphGeometry from './GlyphGeometry.js'
+import { GlyphShader } from './MSDFGlyphMaterial.js'
 
 export {
-  MSDFGlyphGeometry,
+  GlyphGeometry,
+  GlyphShader,
 }

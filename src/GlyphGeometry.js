@@ -11,7 +11,7 @@ import createIndices from 'quad-indices'
 import * as vertices from './pure/vertices'
 import { computeBox, computeSphere } from './pure/utils'
 
-export default class MSDFGlyphGeometry extends BufferGeometry {
+export default class GlyphGeometry extends BufferGeometry {
   constructor(opt){
     super(opt);
     if (opt) this.update(opt)

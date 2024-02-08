@@ -1,14 +1,14 @@
 {
-  "name": "three-msdf-glyph",
+  "name": "three-glyph",
   "version": "0.0.5",
-  "description": "Provide geometry and material in THREE.js for MSDF (multi-channel signed distance fields) and more",
+  "description": "Provide geometry and material in THREE.js for MSDF (multi-channel signed distance fields) glyph and more",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trinketmage/three-msdf-text.git"
+    "url": "git+https://github.com/trinketmage/three-glyph.git"
   },
   "keywords": [
     "bmfont",
@@ -38,9 +38,9 @@
   },
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/trinketmage/three-msdf-text/issues"
+    "url": "https://github.com/trinketmage/three-glyph/issues"
   },
-  "homepage": "https://github.com/trinketmage/three-msdf-text#readme",
+  "homepage": "https://github.com/trinketmage/three-glyph#readme",
   "dependencies": {
     "layout-bmfont-text": "^1.3.4",
     "quad-indices": "^2.0.1"
