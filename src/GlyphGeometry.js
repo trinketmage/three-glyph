@@ -5,7 +5,7 @@ import  {
   Sphere
 } from "three";
 
-import createLayout from 'layout-bmfont-text'
+import { createLayout } from './pure/layout-text'
 import createIndices from 'quad-indices'
 
 import * as vertices from './pure/vertices'
@@ -31,58 +31,36 @@ export default class GlyphGeometry extends BufferGeometry {
     this.layout = createLayout(opt)
 
     var flipY = opt.flipY !== false
+    console.log(flipY);
 
     var font = opt.font
 
+    // determine texture size from font file
     var texWidth = font.common.scaleW
     var texHeight = font.common.scaleH
 
+    // get visible glyphs
     var glyphs = this.layout.glyphs.filter(function (glyph) {
       var bitmap = glyph.data
       return bitmap.width * bitmap.height > 0
     })
 
+    // provide visible glyphs for convenience
     this.visibleGlyphs = glyphs
 
+    // get common vertex data
     var positions = vertices.positions(glyphs)
     var uvs = vertices.uvs(glyphs, texWidth, texHeight, flipY)
-    var guvs = vertices.guvs(glyphs, texWidth, texHeight, flipY)
-    var idxs = vertices.indices(glyphs)
     var indices = createIndices([], {
       clockwise: true,
       type: 'uint16',
       count: glyphs.length
-    });
+    })
 
+    // update vertex data
     this.setIndex(indices)
-    this.setAttribute('index', new BufferAttribute(idxs, 1))
     this.setAttribute('position', new BufferAttribute(positions, 2))
     this.setAttribute('uv', new BufferAttribute(uvs, 2))
-    this.setAttribute('guv', new BufferAttribute(guvs, 2))
-
-    if (opt.animate) {
-      var animate = opt.animate;
-    
-      var animWidth = animate.common.scaleW;
-      var animHeight = animate.common.scaleH;
-      const aOpt = { ...opt };
-      aOpt.font = aOpt.animate;
-      this.layoutAnimate = createLayout(aOpt);
-
-      var animateGlyphs = this.layoutAnimate .glyphs.filter(function(glyph) {
-        var bitmap = glyph.data;
-        return bitmap.width * bitmap.height > 0;
-      });
-      var auvs = vertices.guvs(animateGlyphs, animWidth, animHeight, flipY);
-      this.setAttribute("auv", new BufferAttribute(auvs, 2));
-    }
-
-    if (!opt.multipage && 'page' in this.attributes) {
-      this.removeAttribute('page')
-    } else if (opt.multipage) {
-      var pages = vertices.pages(glyphs)
-      this.setAttribute('page', new BufferAttribute(pages, 1))
-    }
   }
 
   computeBoundingSphere() {

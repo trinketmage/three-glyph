@@ -1,4 +1,4 @@
-import { Color, Vector2, GLSL3 } from 'three';
+import { Color, Vector2, GLSL3, DoubleSide } from 'three';
 export const GlyphShader = {
 
 	name: 'Glyph',
@@ -7,6 +7,7 @@ export const GlyphShader = {
 
 	transparent: true,
 	depthTest: false,
+	side: DoubleSide,
 	uniforms: {
 		opacity: { type: "f", value: 1.0},
 		time: { type: "f", value: 0 },
@@ -23,29 +24,15 @@ export const GlyphShader = {
 	vertexShader: /* glsl */`
 		#define MSDFText
 
-		in float indices;
-		in vec2 guv;
 		in vec2 uv;
 		in vec4 position;
-		uniform float opacity;
-		uniform float total;
 		uniform mat4 projectionMatrix;
 		uniform mat4 modelViewMatrix;
-		out float vIdx;
-		out float mixf;
-		out vec2 vGuv;
 		out vec2 vUv;
 		
-		float exponentialOut(float t) {
-			return t * t;
-		}
-		
 		void main() {
-			vIdx = indices;
-			vGuv = guv;
 			vUv = uv;
-			vec4 pos =  projectionMatrix * modelViewMatrix * position;
-			gl_Position = pos;
+			gl_Position = projectionMatrix * modelViewMatrix * position;
 		}
 	`,
 
@@ -54,12 +41,8 @@ export const GlyphShader = {
 		
 		precision highp float;
 
-		uniform float opacity;
 		uniform vec3 color;
 		uniform sampler2D map;
-		uniform sampler2D alphaMap;
-		in float mixf;
-		in vec2 vGuv;
 		in vec2 vUv;
 		out vec4 myOutputColor;
 
@@ -68,9 +51,10 @@ export const GlyphShader = {
 		}
 
 		void main() {
-			vec3 s = 1.0 - texture(map, vGuv).rgb;
+			vec2 uv = vUv;
+			vec3 s = texture(map, uv).rgb;
 			float sigDist = median(s.r, s.g, s.b) - 0.5;
-			float alpha =  1.0 - clamp(sigDist/fwidth(sigDist) + 0.5, 0.0, 1.0);
+			float alpha = clamp(sigDist/fwidth(sigDist) + 0.5, 0.0, 1.0);;
 
 			myOutputColor = vec4(color, alpha);
 		}
