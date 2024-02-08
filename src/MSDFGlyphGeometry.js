@@ -8,8 +8,8 @@ import  {
 var createLayout = require('layout-bmfont-text')
 var createIndices = require('quad-indices')
 
-var vertices = require('./pure/vertices')
-var utils = require('./pure/utils')
+import vertices from './pure/vertices'
+import { computeBox, computeSphere } from './pure/utils'
 
 export default class MSDFGlyphGeometry extends BufferGeometry {
   constructor(opt){
@@ -97,7 +97,7 @@ export default class MSDFGlyphGeometry extends BufferGeometry {
       this.boundingSphere.center.set(0, 0, 0)
       return
     }
-    utils.computeSphere(positions, this.boundingSphere)
+    computeSphere(positions, this.boundingSphere)
     if (isNaN(this.boundingSphere.radius)) {
       console.error('THREE.BufferGeometry.computeBoundingSphere(): ' +
         'Computed radius is NaN. The ' +
@@ -117,6 +117,6 @@ export default class MSDFGlyphGeometry extends BufferGeometry {
       bbox.makeEmpty()
       return
     }
-    utils.computeBox(positions, bbox)
+    computeBox(positions, bbox)
   }
 }
