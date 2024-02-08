@@ -30,9 +30,9 @@ const geometry = new GlyphGeometry({
 });
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
-mesh.geometry.computeBoundingBox();
+// mesh.geometry.computeBoundingBox();
 mesh.position.x = -geometry.layout.width / 2;
-mesh.position.y = -geometry.layout.height / 2;
+mesh.position.y = -geometry.layout.height / 2 + 10;
 mesh.rotation.x = Math.PI
 
 function handleResize() {

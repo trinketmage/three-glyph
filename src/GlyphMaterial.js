@@ -25,13 +25,16 @@ export const GlyphShader = {
 		#define MSDFText
 
 		in vec2 uv;
+		in vec2 guv;
 		in vec4 position;
 		uniform mat4 projectionMatrix;
 		uniform mat4 modelViewMatrix;
 		out vec2 vUv;
+		out vec2 vGuv;
 		
 		void main() {
 			vUv = uv;
+			vGuv = guv;
 			gl_Position = projectionMatrix * modelViewMatrix * position;
 		}
 	`,
@@ -44,6 +47,7 @@ export const GlyphShader = {
 		uniform vec3 color;
 		uniform sampler2D map;
 		in vec2 vUv;
+		in vec2 vGuv;
 		out vec4 myOutputColor;
 
 		float median(float r, float g, float b) {
@@ -51,8 +55,7 @@ export const GlyphShader = {
 		}
 
 		void main() {
-			vec2 uv = vUv;
-			vec3 s = texture(map, uv).rgb;
+			vec3 s = texture(map, vGuv).rgb;
 			float sigDist = median(s.r, s.g, s.b) - 0.5;
 			float alpha = clamp(sigDist/fwidth(sigDist) + 0.5, 0.0, 1.0);;
 

@@ -5,9 +5,9 @@ import  {
   Sphere
 } from "three";
 
-import { createLayout } from './pure/layout-text'
 import createIndices from 'quad-indices'
 
+import { createLayout } from './pure/layout-text'
 import * as vertices from './pure/vertices'
 import { computeBox, computeSphere } from './pure/utils'
 
@@ -31,36 +31,34 @@ export default class GlyphGeometry extends BufferGeometry {
     this.layout = createLayout(opt)
 
     var flipY = opt.flipY !== false
-    console.log(flipY);
 
     var font = opt.font
 
-    // determine texture size from font file
     var texWidth = font.common.scaleW
     var texHeight = font.common.scaleH
 
-    // get visible glyphs
     var glyphs = this.layout.glyphs.filter(function (glyph) {
       var bitmap = glyph.data
       return bitmap.width * bitmap.height > 0
     })
 
-    // provide visible glyphs for convenience
     this.visibleGlyphs = glyphs
 
-    // get common vertex data
-    var positions = vertices.positions(glyphs)
-    var uvs = vertices.uvs(glyphs, texWidth, texHeight, flipY)
     var indices = createIndices([], {
       clockwise: true,
       type: 'uint16',
       count: glyphs.length
     })
+    var index = vertices.indices(glyphs)
+    var positions = vertices.positions(glyphs)
+    var uvs = vertices.uvs(glyphs, texWidth, texHeight, flipY)
+    var guvs = vertices.guvs(glyphs, texWidth, texHeight, flipY)
 
-    // update vertex data
     this.setIndex(indices)
+    this.setAttribute('index', new BufferAttribute(index, 1));
     this.setAttribute('position', new BufferAttribute(positions, 2))
     this.setAttribute('uv', new BufferAttribute(uvs, 2))
+    this.setAttribute('guv', new BufferAttribute(guvs, 2));
   }
 
   computeBoundingSphere() {
