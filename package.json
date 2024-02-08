@@ -1,0 +1,51 @@
+{
+  "name": "@trinketmage/three-msdf-text",
+  "version": "0.0.3",
+  "description": "Provide geometry and material in THREE.js for MSDF (multi-channel signed distance fields) and more",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trinketmage/three-msdf-text.git"
+  },
+  "keywords": [
+    "bmfont",
+    "bitmap",
+    "font",
+    "text",
+    "three",
+    "threejs",
+    "quad",
+    "quads",
+    "batch",
+    "render",
+    "fonts",
+    "layout",
+    "word",
+    "wrap",
+    "word-wrap",
+    "word-wrapping",
+    "wrapping",
+    "glyph",
+    "glyphs"
+  ],
+  "author": {
+    "name": "Tran Rémi",
+    "email": "tranremi@live.fr",
+    "url": "https://github.com/trinketmage"
+  },
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/trinketmage/three-msdf-text/issues"
+  },
+  "homepage": "https://github.com/trinketmage/three-msdf-text#readme",
+  "dependencies": {
+    "layout-bmfont-text": "^1.3.4",
+    "quad-indices": "^2.0.1"
+  },
+  "devDependencies": {
+    "three": "^0.118.3"
+  }
+}
