@@ -5,10 +5,10 @@ import  {
   Sphere
 } from "three";
 
-var createLayout = require('layout-bmfont-text')
-var createIndices = require('quad-indices')
+import createLayout from 'layout-bmfont-text'
+import createIndices from 'quad-indices'
 
-import vertices from './pure/vertices'
+import * as vertices from './pure/vertices'
 import { computeBox, computeSphere } from './pure/utils'
 
 export default class MSDFGlyphGeometry extends BufferGeometry {

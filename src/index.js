@@ -1,5 +1,5 @@
-import MSDFTextGeometry from './MSDFTextGeometry.js'
+import MSDFGlyphGeometry from './MSDFGlyphGeometry.js'
 
 export {
-  MSDFTextGeometry,
+  MSDFGlyphGeometry,
 }
