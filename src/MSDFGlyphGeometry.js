@@ -11,7 +11,7 @@ var createIndices = require('quad-indices')
 var vertices = require('./pure/vertices')
 var utils = require('./pure/utils')
 
-export default class MSDFTextGeometry extends BufferGeometry {
+export default class MSDFGlyphGeometry extends BufferGeometry {
   constructor(opt){
     super(opt);
     if (opt) this.update(opt)

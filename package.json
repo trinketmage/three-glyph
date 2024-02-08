@@ -1,5 +1,5 @@
 {
-  "name": "@trinketmage/three-msdf-text",
+  "name": "three-msdf-glyph",
   "version": "0.0.3",
   "description": "Provide geometry and material in THREE.js for MSDF (multi-channel signed distance fields) and more",
   "main": "src/index.js",
