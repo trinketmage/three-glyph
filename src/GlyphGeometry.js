@@ -48,7 +48,6 @@ export default class GlyphGeometry extends BufferGeometry {
       clockwise: true,
       type: 'uint16',
       count: glyphs.length,
-      verticalAlign: 'top'
     })
     var index = vertices.indices(glyphs)
     var positions = vertices.positions(glyphs)
