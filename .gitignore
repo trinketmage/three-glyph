@@ -25,3 +25,7 @@ pnpm-debug.log*
 .firebaserc
 firebase-debug.log
 *.firebaserc
+firebase.json
+hosting.*
+
+dist
