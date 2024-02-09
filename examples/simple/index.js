@@ -1,7 +1,7 @@
 
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { GlyphGeometry, GlyphMaterial } from '../../src/index.js'
+import { Glyph, GlyphGeometry, GlyphMaterial } from '../../src/index.js'
 import font from './Love.json'
 
 const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 10000);
@@ -30,7 +30,7 @@ const onLoaded = () => {
     text: 'LO-VÉ.D',
     font,
   });
-  const mesh = new THREE.Mesh(geometry, material);
+  const mesh = new Glyph(geometry, material);
   scene.add(mesh);
   mesh.position.x = -geometry.layout.width / 2;
   mesh.position.y = geometry.layout.height / 2;

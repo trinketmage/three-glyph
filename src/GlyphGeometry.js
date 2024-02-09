@@ -3,7 +3,7 @@ import  {
   BufferGeometry,
   BufferAttribute,
   Sphere
-} from "three";
+} from 'three'
 
 import createIndices from 'quad-indices'
 

@@ -1,4 +1,5 @@
-import { Color, GLSL3, ShaderMaterial, UniformsUtils } from 'three';
+import { Color, GLSL3, ShaderMaterial, UniformsUtils } from 'three'
+
 const GlyphShader = {
 
 	name: 'Glyph',
@@ -11,7 +12,7 @@ const GlyphShader = {
 
 	uniforms: {
 		map: { value: null },
-		color: { type: "c", value: new Color(0xece9e3) },
+		color: { value: new Color(0xece9e3) },
 	},
 
 	vertexShader: /* glsl */`
