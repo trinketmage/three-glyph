@@ -14,6 +14,7 @@ import { computeBox, computeSphere } from './pure/utils'
 export default class GlyphGeometry extends BufferGeometry {
   constructor(opt){
     super(opt);
+    this._opt = Object.assign({}, opt)
     if (opt) this.update(opt)
   }
 
@@ -21,9 +22,8 @@ export default class GlyphGeometry extends BufferGeometry {
     if (typeof opt === 'string') {
       opt = { text: opt }
     }
-
     opt = Object.assign({}, this._opt, opt)
-
+    console.log(opt);
     if (!opt.font) {
       throw new TypeError('must specify a { font } in options')
     }
