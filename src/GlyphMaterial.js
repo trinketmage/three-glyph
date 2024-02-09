@@ -1,5 +1,5 @@
-import { Color, Vector2, GLSL3 } from 'three';
-export const GlyphShader = {
+import { Color, Vector2, GLSL3, ShaderMaterial, UniformsUtils } from 'three';
+const GlyphShader = {
 
 	name: 'Glyph',
 
@@ -7,6 +7,8 @@ export const GlyphShader = {
 
 	transparent: true,
 	depthTest: false,
+	defines: {},
+
 	uniforms: {
 		opacity: { type: "f", value: 1.0},
 		time: { type: "f", value: 0 },
@@ -63,3 +65,22 @@ export const GlyphShader = {
 	`
 
 };
+
+class GlyphMaterial extends ShaderMaterial {
+	
+	constructor( parameters ) {
+		GlyphShader.uniforms = UniformsUtils.merge( [
+			GlyphShader.uniforms,
+			parameters.uniforms,
+		]);
+
+		super(GlyphShader);
+
+		this.isRawShaderMaterial = true;
+
+		this.type = 'GlyphMaterial';
+	}
+	
+}
+
+export { GlyphMaterial, GlyphShader };

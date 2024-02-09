@@ -1,7 +1,7 @@
 
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { GlyphGeometry, GlyphShader } from '../../src/index.js'
+import { GlyphGeometry, GlyphShader, GlyphMaterial } from '../../src/index.js'
 import font from './Love.json'
 
 const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 10000);
@@ -22,10 +22,14 @@ const textureLoader = new THREE.TextureLoader();
 const texture = textureLoader.load( "/Love.png" );
 texture.flipY = true;
 texture.needsUpdate = true;
-const uni = new THREE.Uniform(texture);
 
-GlyphShader.uniforms.map = uni;
-const material = new THREE.RawShaderMaterial(GlyphShader);
+const mapUniform = new THREE.Uniform(texture);
+
+const material = new GlyphMaterial({
+  uniforms: {
+    map: mapUniform
+  }
+});
 const geometry = new GlyphGeometry({
   text: 'LO-VÉ.',
   font,
