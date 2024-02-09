@@ -13,6 +13,8 @@ const scene = new THREE.Scene();
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 
+const textureLoader = new THREE.TextureLoader();
+
 const controls = new OrbitControls(camera, renderer.domElement);
 
 let glyph = null;
@@ -73,6 +75,8 @@ const onLoaded = () => {
     map: texture
   });
 
+  // glyph.children[0].material.map = textureLoader.load( "/UVChecker.png");
+
   // // low level
   // const mapUniform = new THREE.Uniform(texture)
   // 
@@ -97,7 +101,6 @@ const onLoaded = () => {
   setDebug()
 }
 
-const textureLoader = new THREE.TextureLoader();
 const texture = textureLoader.load( "/Love.png", onLoaded);
 
 function handleResize() {

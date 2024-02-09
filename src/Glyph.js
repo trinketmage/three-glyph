@@ -22,11 +22,15 @@ class Glyph extends Object3D {
       font
     });
 
-    this.material = material || new GlyphMaterial({
-      uniforms: {
-        map: new Uniform(map)
-      }
-    });
+    if (material && material.map) {
+      this.material = material;
+    } else if (map) {
+      this.material = new GlyphMaterial({
+        uniforms: {
+          map: new Uniform(map)
+        }
+      });
+    }
 
     this.mesh = new Mesh(this.geometry, this.material);
 
