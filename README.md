@@ -8,7 +8,8 @@
 
 ES6 adaptation of [three-bmfont-text](https://github.com/Experience-Monks/three-bmfont-text) and more..
 
-[Example](https://thre-glyph-animate-tool.web.app/)
+[Example](https://three-glyph-examples.web.app/)
+[Animation example](https://thre-glyph-animate-tool.web.app/)
 
 ## Roadmap
  * [x] Basic GlyphGeometry
