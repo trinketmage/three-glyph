@@ -9,6 +9,7 @@
 ES6 adaptation of [three-bmfont-text](https://github.com/Experience-Monks/three-bmfont-text) and more..
 
 ## Demo
+ ![image description](love.png)
  * [Example](https://three-glyph-examples.web.app/)
  * [Animation example](https://thre-glyph-animate-tool.web.app/)
 
