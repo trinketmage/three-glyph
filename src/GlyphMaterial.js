@@ -1,4 +1,4 @@
-import { Color, Vector2, GLSL3, DoubleSide } from 'three';
+import { Color, Vector2, GLSL3, BackSide } from 'three';
 export const GlyphShader = {
 
 	name: 'Glyph',
@@ -7,7 +7,7 @@ export const GlyphShader = {
 
 	transparent: true,
 	depthTest: false,
-	side: DoubleSide,
+	side: BackSide,
 	uniforms: {
 		opacity: { type: "f", value: 1.0},
 		time: { type: "f", value: 0 },

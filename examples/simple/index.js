@@ -20,20 +20,20 @@ document.body.appendChild(renderer.domElement);
 
 const textureLoader = new THREE.TextureLoader();
 const texture = textureLoader.load( "/Love.png" );
+texture.flipY = true;
+texture.needsUpdate = true;
 const uni = new THREE.Uniform(texture);
 
 GlyphShader.uniforms.map = uni;
 const material = new THREE.RawShaderMaterial(GlyphShader);
 const geometry = new GlyphGeometry({
-  text: 'LOVE',
+  text: 'LOVÉ LOVE',
   font,
 });
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
-// mesh.geometry.computeBoundingBox();
 mesh.position.x = -geometry.layout.width / 2;
-mesh.position.y = -geometry.layout.height / 2 + 10;
-mesh.rotation.x = Math.PI
+mesh.position.y = geometry.layout.height / 2;
 
 function handleResize() {
   camera.aspect = window.innerWidth / window.innerHeight;

@@ -35,16 +35,16 @@ export const guvs = function guvs(glyphs, texWidth, texHeight, flipY) {
 
     // BL
     uvs[i++] = u0;
-    uvs[i++] = v1;
+    uvs[i++] = v0;
     // TL
     uvs[i++] = u0;
-    uvs[i++] = v0;
+    uvs[i++] = v1;
     // TR
     uvs[i++] = u1;
-    uvs[i++] = v0;
+    uvs[i++] = v1;
     // BR
     uvs[i++] = u1;
-    uvs[i++] = v1;
+    uvs[i++] = v0;
   });
   return uvs;
 };
@@ -82,7 +82,8 @@ export const positions = function positions(glyphs) {
 
     // bottom left position
     var x = glyph.position[0] + bitmap.xoffset;
-    var y = glyph.position[1] + bitmap.yoffset;
+    // var y = glyph.position[1] + bitmap.yoffset;
+    var y = glyph.position[1];
 
     // quad size
     var w = bitmap.width;
