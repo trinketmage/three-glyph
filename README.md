@@ -18,12 +18,19 @@ ES6 adaptation of [three-bmfont-text](https://github.com/Experience-Monks/three-
  * [ ] Basic Glyph (Mesh)
  * [ ] Glyph [anchorX and anchorY](https://protectwise.github.io/troika/troika-three-text/#anchorx)
  * [ ] Shader "chunkification"
- * [ ] Example with custom map texture (video)
- * [ ] Example with [alphaMap per character](https://thre-glyph-animate-tool.web.app/) example with tutorial.
+ * [ ] Handles per lines and per character's index
  * [ ] API animation per character
  * [ ] API animation per line
+ * [ ] Example with custom map texture (video)
+ * [ ] Example with [alphaMap per character](https://thre-glyph-animate-tool.web.app/) example with tutorial.
  * [ ] Right-to-left layout
 
 <p>
   <a href="https://twitter.com/remuemeninge"><img src="https://img.shields.io/twitter/follow/remuemeninge?style=social" alt="Twitter"></a>
 </p>
+
+## License
+
+[GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)
+
+Copyright (c) 2024-present, Rémi Tran
