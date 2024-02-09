@@ -6,10 +6,11 @@
   <a href="https://github.com/trinketmage/three-glyph/issues"><img src="https://img.shields.io/github/issues/trinketmage/three-glyph" alt="Issues"></a>
 </p>
 
+[![image description](love.png)](https://three-glyph-examples.web.app/)
+
 ES6 adaptation of [three-bmfont-text](https://github.com/Experience-Monks/three-bmfont-text) and more..
 
 ## Demo
- ![image description](love.png)
  * [Example](https://three-glyph-examples.web.app/)
  * [Animation example](https://thre-glyph-animate-tool.web.app/)
 
