@@ -15,8 +15,9 @@ ES6 adaptation of [three-bmfont-text](https://github.com/Experience-Monks/three-
  * [x] Fix drawing vertices order
  * [x] Basic GlyphShader
  * [x] Basic GlyphMaterial
- * [ ] Basic Glyph (Mesh)
- * [ ] Glyph [anchorX and anchorY](https://protectwise.github.io/troika/troika-three-text/#anchorx)
+ * [x] Basic Glyph (Mesh)
+ * [x] Glyph [anchorX and anchorY](https://protectwise.github.io/troika/troika-three-text/#anchorx)
+ * [ ] How to debug example
  * [ ] Shader "chunkification"
  * [ ] Handles per lines and per character's index
  * [ ] API animation per character
