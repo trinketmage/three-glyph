@@ -1,7 +1,7 @@
 
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { Glyph, GlyphGeometry, GlyphMaterial } from '../../src/index.js'
+import { Glyph } from '../../src/index.js'
 import font from './Love.json'
 
 import { Pane } from 'tweakpane';

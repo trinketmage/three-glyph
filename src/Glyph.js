@@ -6,7 +6,7 @@ import {
 } from 'three'
 
 import GlyphGeometry from './GlyphGeometry';
-import { GlyphMaterial } from './GlyphMaterial';
+import GlyphMaterial from './GlyphMaterial';
 
 class Glyph extends Object3D {
 

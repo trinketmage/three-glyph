@@ -76,4 +76,5 @@ class GlyphMaterial extends ShaderMaterial {
 	
 }
 
-export { GlyphMaterial, GlyphShader };
+export { GlyphShader };
+export default GlyphMaterial;
