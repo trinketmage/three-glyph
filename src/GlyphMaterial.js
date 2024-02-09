@@ -10,16 +10,8 @@ const GlyphShader = {
 	defines: {},
 
 	uniforms: {
-		opacity: { type: "f", value: 1.0},
-		time: { type: "f", value: 0 },
-		stagger: { value: 0.01 },
-		direction: { value: 0.0 },
-		duration: { value: 1.0 },
 		map: { value: null },
 		color: { type: "c", value: new Color(0xece9e3) },
-		resolution: { type: "c", value: new Vector2(0, 0) },
-		mixRatio: { value: 0.0 },
-		total: { type: "f", value: 0 },
 	},
 
 	vertexShader: /* glsl */`
