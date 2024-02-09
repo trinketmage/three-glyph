@@ -1,4 +1,3 @@
-
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { Glyph } from '../../src/index.js'
@@ -54,7 +53,7 @@ const setDebug = () => {
     title: "Presets",
     expanded: false
   });
-  ['center', 'alignLeft', 'alignRight', 'alignTop', 'alignBottom'].forEach((property) => {
+  ['center', 'alignTop', 'alignRight', 'alignBottom', 'alignLeft'].forEach((property) => {
     folder
       .addButton({
         title: property
