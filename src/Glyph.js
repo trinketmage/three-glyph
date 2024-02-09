@@ -2,7 +2,11 @@ import {
   Object3D,
 	Mesh,
   Vector2,
+  Uniform,
 } from 'three'
+
+import GlyphGeometry from './GlyphGeometry';
+import { GlyphMaterial } from './GlyphMaterial';
 
 class Glyph extends Object3D {
 
@@ -11,12 +15,20 @@ class Glyph extends Object3D {
 	constructor(params) {
 		super();
 
-    const { geometry, material } = params;
+    const { geometry, material, text, font, map } = params;
 
-    this.geometry = geometry;
-    this.material = material;
+    this.geometry = geometry || new GlyphGeometry({
+      text,
+      font
+    });
 
-    this.mesh = new Mesh(geometry, material);
+    this.material = material || new GlyphMaterial({
+      uniforms: {
+        map: new Uniform(map)
+      }
+    });
+
+    this.mesh = new Mesh(this.geometry, this.material);
 
     this.update();
 

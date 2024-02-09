@@ -64,21 +64,29 @@ const setDebug = () => {
 }
 
 const onLoaded = () => {
-  const mapUniform = new THREE.Uniform(texture);
-
-  const material = new GlyphMaterial({
-    uniforms: {
-      map: mapUniform
-    }
-  });
-  const geometry = new GlyphGeometry({
+  glyph = new Glyph({
     text: PARAMS.text,
     font,
+    map: texture
   });
-  glyph = new Glyph({
-    geometry,
-    material
-  });
+
+  // // low level
+  // const mapUniform = new THREE.Uniform(texture)
+  // 
+  // const material = new GlyphMaterial({
+  //   uniforms: {
+  //     map: mapUniform
+  //   }
+  // });
+  //
+  // const geometry = new GlyphGeometry({
+  //   text: PARAMS.text,
+  //   font,
+  // });
+  // glyph = new Glyph({
+  //   geometry,
+  //   material
+  // });
 
   glyph.center();
   scene.add(glyph);
