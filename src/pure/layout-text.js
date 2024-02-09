@@ -147,7 +147,6 @@ class TextLayout {
                     } else if (align === ALIGN_RIGHT) {
                         tx += (maxLineWidth - lineWidth);
                     }
-                        console.log(glyph)
                     const { yoffset, height } = glyph;
                     glyphs.push({
                         position: [tx, y - (height + yoffset)],
@@ -183,7 +182,6 @@ class TextLayout {
                     lastGlyph = glyph;
                 }
             }
-            console.log(y);
             // next line down
             y -= lineHeight;
             x = 0;
