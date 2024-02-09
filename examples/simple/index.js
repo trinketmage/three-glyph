@@ -27,7 +27,7 @@ const uni = new THREE.Uniform(texture);
 GlyphShader.uniforms.map = uni;
 const material = new THREE.RawShaderMaterial(GlyphShader);
 const geometry = new GlyphGeometry({
-  text: 'LO. -VÉ LOVE',
+  text: 'LO-VÉ.',
   font,
 });
 const mesh = new THREE.Mesh(geometry, material);
