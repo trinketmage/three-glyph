@@ -34,16 +34,16 @@ export const guvs = function guvs(glyphs, texWidth, texHeight, flipY) {
     }
 
     // BL
-    uvs[i++] = u0;
+    uvs[i++] = u1;
     uvs[i++] = v0;
     // TL
-    uvs[i++] = u0;
+    uvs[i++] = u1;
     uvs[i++] = v1;
     // TR
-    uvs[i++] = u1;
+    uvs[i++] = u0;
     uvs[i++] = v1;
     // BR
-    uvs[i++] = u1;
+    uvs[i++] = u0;
     uvs[i++] = v0;
   });
   return uvs;
@@ -89,17 +89,17 @@ export const positions = function positions(glyphs) {
     var w = bitmap.width;
     var h = bitmap.height;
 
-    // BL
-    positions[i++] = x;
+    // BR
+    positions[i++] = x + w;
     positions[i++] = y;
-    // TL
-    positions[i++] = x;
-    positions[i++] = y + h;
     // TR
     positions[i++] = x + w;
     positions[i++] = y + h;
-    // BR
-    positions[i++] = x + w;
+    // TL
+    positions[i++] = x;
+    positions[i++] = y + h;
+    // BL
+    positions[i++] = x;
     positions[i++] = y;
   });
   return positions;
