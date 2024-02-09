@@ -7,7 +7,6 @@ export const GlyphShader = {
 
 	transparent: true,
 	depthTest: false,
-	// side: BackSide,
 	uniforms: {
 		opacity: { type: "f", value: 1.0},
 		time: { type: "f", value: 0 },

@@ -13,7 +13,6 @@ export const pages = function pages(glyphs) {
   return pages;
 };
 
-// uv inside group
 export const guvs = function guvs(glyphs, texWidth, texHeight, flipY) {
   var uvs = new Float32Array(glyphs.length * 4 * 2);
   var i = 0;
@@ -22,7 +21,6 @@ export const guvs = function guvs(glyphs, texWidth, texHeight, flipY) {
     var bw = bitmap.x + bitmap.width;
     var bh = bitmap.y + bitmap.height;
 
-    // top left position
     var u0 = bitmap.x / texWidth;
     var v1 = bitmap.y / texHeight;
     var u1 = bw / texWidth;
@@ -33,16 +31,12 @@ export const guvs = function guvs(glyphs, texWidth, texHeight, flipY) {
       v0 = (texHeight - bh) / texHeight;
     }
 
-    // BL
     uvs[i++] = u1;
     uvs[i++] = v0;
-    // TL
     uvs[i++] = u1;
     uvs[i++] = v1;
-    // TR
     uvs[i++] = u0;
     uvs[i++] = v1;
-    // BR
     uvs[i++] = u0;
     uvs[i++] = v0;
   });
@@ -58,18 +52,14 @@ export const uvs = function uvs(glyphs) {
     var u1 = 1;
     var v0 = 0;
 
-    // BL
-    uvs[i++] = u0;
-    uvs[i++] = v1;
-    // TL
-    uvs[i++] = u0;
-    uvs[i++] = v0;
-    // TR
     uvs[i++] = u1;
     uvs[i++] = v0;
-    // BR
     uvs[i++] = u1;
     uvs[i++] = v1;
+    uvs[i++] = u0;
+    uvs[i++] = v1;
+    uvs[i++] = u0;
+    uvs[i++] = v0;
   });
   return uvs;
 };
@@ -80,25 +70,18 @@ export const positions = function positions(glyphs) {
   glyphs.forEach(function(glyph) {
     var bitmap = glyph.data;
 
-    // bottom left position
     var x = glyph.position[0] + bitmap.xoffset;
-    // var y = glyph.position[1] + bitmap.yoffset;
     var y = glyph.position[1];
 
-    // quad size
     var w = bitmap.width;
     var h = bitmap.height;
 
-    // BR
     positions[i++] = x + w;
     positions[i++] = y;
-    // TR
     positions[i++] = x + w;
     positions[i++] = y + h;
-    // TL
     positions[i++] = x;
     positions[i++] = y + h;
-    // BL
     positions[i++] = x;
     positions[i++] = y;
   });
