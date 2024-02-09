@@ -49,7 +49,7 @@ const setDebug = () => {
       glyph.update();
     });
   const folder = pane.addFolder({
-    title: "Preset",
+    title: "Presets",
     expanded: false
   });
   ['center', 'alignLeft', 'alignRight', 'alignTop', 'alignBottom'].forEach((property) => {
