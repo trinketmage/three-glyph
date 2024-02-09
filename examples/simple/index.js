@@ -59,6 +59,9 @@ const setDebug = () => {
       })
       .on('click', () => {
         glyph[property]()
+        PARAMS.anchor.x = glyph.anchor.x;
+        PARAMS.anchor.y = glyph.anchor.y;
+        pane.refresh();
       });
   });
 }
