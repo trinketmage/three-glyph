@@ -6,7 +6,7 @@ import font from './Love.json'
 
 import { Pane } from 'tweakpane';
 
-const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 10000);
+const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 1000);
 camera.position.z = 500;
 
 const scene = new THREE.Scene();
