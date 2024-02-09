@@ -1,4 +1,4 @@
-import { Color, Vector2, GLSL3, ShaderMaterial, UniformsUtils } from 'three';
+import { Color, GLSL3, ShaderMaterial, UniformsUtils } from 'three';
 const GlyphShader = {
 
 	name: 'Glyph',
