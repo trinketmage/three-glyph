@@ -27,13 +27,12 @@ const onLoaded = () => {
     }
   });
   const geometry = new GlyphGeometry({
-    text: 'LO-VÉ.D',
+    text: 'LO-VÉ.',
     font,
   });
-  const mesh = new Glyph(geometry, material);
-  scene.add(mesh);
-  mesh.position.x = -geometry.layout.width / 2;
-  mesh.position.y = geometry.layout.height / 2;
+  const glyph = new Glyph({ geometry, material });
+  scene.add(glyph);
+  glyph.center();
 }
 
 const textureLoader = new THREE.TextureLoader();
