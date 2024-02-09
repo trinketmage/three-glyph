@@ -10,7 +10,7 @@ import { GlyphMaterial } from './GlyphMaterial';
 
 class Glyph extends Object3D {
 
-  anchor = new Vector2(0, 0)
+  anchor = new Vector2(0, 1)
 
 	constructor(params) {
 		super();
@@ -65,7 +65,7 @@ class Glyph extends Object3D {
     const { mesh, geometry, anchor } = this;
     if (text) geometry.update(text);
     mesh.position.x = -mesh.geometry.layout.width * anchor.x;
-    mesh.position.y = mesh.geometry.layout.height * anchor.y;
+    mesh.position.y = mesh.geometry.layout.height * (1.0 - anchor.y);
   }
 
   dispose() {
