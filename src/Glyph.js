@@ -22,7 +22,7 @@ class Glyph extends Object3D {
       font
     });
 
-    if (material && material.map) {
+    if (material && material.uniforms.map) {
       this.material = material;
     } else if (map) {
       this.material = new GlyphMaterial({

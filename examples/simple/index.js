@@ -1,12 +1,12 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { Glyph } from '../../src/index.js'
+import { Glyph, GlyphGeometry, GlyphMaterial } from '../../src/index.js'
 import font from './Love.json'
 
 import { Pane } from 'tweakpane';
 
 const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 3000);
-camera.position.z = 500;
+camera.position.z = 100;
 
 const scene = new THREE.Scene();
 
@@ -73,28 +73,28 @@ const onLoaded = () => {
     font,
     map: texture
   });
-
-  glyph.mesh.frustumCulled = false;
-
   // glyph.children[0].material.map = textureLoader.load( "/UVChecker.png");
 
-  // // low level
+  // low level
   // const mapUniform = new THREE.Uniform(texture)
-  // 
+  
   // const material = new GlyphMaterial({
   //   uniforms: {
   //     map: mapUniform
   //   }
   // });
-  //
   // const geometry = new GlyphGeometry({
   //   text: PARAMS.text,
   //   font,
+
   // });
+
   // glyph = new Glyph({
   //   geometry,
   //   material
   // });
+
+  glyph.mesh.frustumCulled = false;
 
   glyph.center();
   scene.add(glyph);
