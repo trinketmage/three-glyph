@@ -6,7 +6,7 @@ import font from './Love.json'
 import { Pane } from 'tweakpane';
 
 const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 3000);
-camera.position.z = 100;
+camera.position.z = 500;
 
 const scene = new THREE.Scene();
 
@@ -71,7 +71,7 @@ const onLoaded = () => {
   glyph = new Glyph({
     text: PARAMS.text,
     font,
-    // map: texture
+    map: texture
   });
   // glyph.children[0].material.map = textureLoader.load( "/UVChecker.png");
 
