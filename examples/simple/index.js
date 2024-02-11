@@ -71,7 +71,7 @@ const onLoaded = () => {
   glyph = new Glyph({
     text: PARAMS.text,
     font,
-    map: texture
+    // map: texture
   });
   // glyph.children[0].material.map = textureLoader.load( "/UVChecker.png");
 

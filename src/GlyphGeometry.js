@@ -23,7 +23,6 @@ export default class GlyphGeometry extends BufferGeometry {
       opt = { text: opt }
     }
     opt = Object.assign({}, this._opt, opt)
-    console.log(opt);
     if (!opt.font) {
       throw new TypeError('must specify a { font } in options')
     }
