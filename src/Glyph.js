@@ -55,12 +55,12 @@ class Glyph extends Object3D {
   }
 
   alignTop() {
-    this.anchor.y = 0;
+    this.anchor.y = 1;
     this.update();
   }
 
   alignBottom() {
-    this.anchor.y = 1;
+    this.anchor.y = 0;
     this.update();
   }
 
