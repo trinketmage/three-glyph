@@ -31,6 +31,7 @@ ES6 adaptation of [three-bmfont-text](https://github.com/Experience-Monks/three-
  * [ ] Example with [alphaMap per character](https://thre-glyph-animate-tool.web.app/) example with tutorial.
  * [ ] Right-to-left layout
  * [ ] Documentation
+ * [x] Negate map support
 
 ## License
 

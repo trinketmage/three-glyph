@@ -15,7 +15,7 @@ class Glyph extends Object3D {
 	constructor(params) {
 		super();
 
-    const { geometry, material, text, font, map } = params;
+    const { geometry, material, text, font, map, negate } = params;
 
     this.geometry = geometry || new GlyphGeometry({
       text,
@@ -26,6 +26,7 @@ class Glyph extends Object3D {
       this.material = material;
     } else if (map) {
       this.material = new GlyphMaterial({
+        negate,
         uniforms: {
           map: new Uniform(map)
         }

@@ -1,4 +1,10 @@
-import { Color, GLSL3, ShaderMaterial, UniformsUtils } from 'three'
+import { Color, GLSL3, ShaderMaterial, UniformsUtils, ShaderChunk } from 'three'
+
+const GlyphShaderChunks = {
+	'negate': `
+		s = vec3(1.0) - s;
+	`
+};
 
 const GlyphShader = {
 
@@ -50,6 +56,8 @@ const GlyphShader = {
 
 		void main() {
 			vec3 s = texture(map, vGuv).rgb;
+			#include <glyph_negate>
+			
 			float sigDist = median(s.r, s.g, s.b) - 0.5;
 			float alpha = clamp(sigDist/fwidth(sigDist) + 0.5, 0.0, 1.0);;
 
@@ -72,6 +80,15 @@ class GlyphMaterial extends ShaderMaterial {
 		this.isRawShaderMaterial = true;
 
 		this.type = 'GlyphMaterial';
+
+    this.onBeforeCompile = shader => {
+			let { fragmentShader: fragment } = shader;
+			fragment = fragment.replace(
+				'#include <glyph_negate>',
+				parameters.negate ? GlyphShaderChunks.negate : ''
+			);
+			shader.fragmentShader = fragment;
+    };
 	}
 	
 }
