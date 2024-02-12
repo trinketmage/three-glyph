@@ -13,6 +13,7 @@ ES6 adaptation of [three-bmfont-text](https://github.com/Experience-Monks/three-
 
 ## Demo
  * [Example](https://three-glyph-examples.web.app/)
+ * [Font atlas previewer](https://codepen.io/trinketmage/pen/KKEGOjx)
  * [Animation example](https://thre-glyph-animate-tool.web.app/)
 
 ## Roadmap
