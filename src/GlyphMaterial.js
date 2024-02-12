@@ -81,6 +81,10 @@ class GlyphMaterial extends ShaderMaterial {
 
 		this.type = 'GlyphMaterial';
 
+		this.customProgramCacheKey = function() { 
+			return parameters.negate;
+		}
+
     this.onBeforeCompile = shader => {
 			let { fragmentShader: fragment } = shader;
 			fragment = fragment.replace(
