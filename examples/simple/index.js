@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { Glyph, GlyphGeometry, GlyphMaterial } from '../../src/index.js'
+// import font from './Roboto-Regular.json'
 import font from './Love.json'
 
 import { Pane } from 'tweakpane';
@@ -162,6 +163,7 @@ const onLoaded = () => {
   setDebug()
 }
 
+// const texture = textureLoader.load( "/Roboto-Regular.png", onLoaded);
 const texture = textureLoader.load( "/Love.png", onLoaded);
 
 function handleResize() {

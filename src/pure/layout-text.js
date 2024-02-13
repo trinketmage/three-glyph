@@ -101,8 +101,6 @@ class TextLayout {
         const height = lineHeight * lines.length - descender;
         const align = getAlignType(this._options.align);
 
-        // draw text along baseline
-        // y -= height;
 
         // the metrics for this text layout
         this._width = maxLineWidth;
@@ -113,6 +111,8 @@ class TextLayout {
         this._capHeight = getCapHeight(font);
         this._lineHeight = lineHeight;
         this._ascender = lineHeight - descender - this._xHeight;
+        // draw text along baseline
+        // y -= height;
 
         let wordIndex = 0;
         let letterIndex = 0;
@@ -148,8 +148,9 @@ class TextLayout {
                         tx += (maxLineWidth - lineWidth);
                     }
                     const { yoffset, height } = glyph;
+                    console.log(glyph);
                     glyphs.push({
-                        position: [tx, y - (height + yoffset)],
+                        position: [tx, y - (height + yoffset) + descender * 0.5],
                         data: glyph,
                         index: i,
                         // Line

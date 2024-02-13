@@ -18,7 +18,7 @@ const GlyphShader = {
 
 	uniforms: {
 		map: { value: null },
-		color: { value: new Color(0xffffff) },
+		color: { value: new Color(0xece9e3) },
 	},
 
 	vertexShader: /* glsl */`
@@ -81,9 +81,9 @@ class GlyphMaterial extends ShaderMaterial {
 
 		this.type = 'GlyphMaterial';
 
-		// this.customProgramCacheKey = function() { 
-		// 	return 1;
-		// }
+		this.customProgramCacheKey = function() { 
+			return parameters.negate;
+		}
 
     this.onBeforeCompile = shader => {
 			let { fragmentShader: fragment } = shader;
