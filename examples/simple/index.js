@@ -33,6 +33,7 @@ const PARAMS = {
     y: 0.5
   },
   color: 0xece9e3,
+  align: 'left',
   // width: null,
   letterSpacing: 0,
   lineHeight: font.common.lineHeight,
@@ -69,17 +70,29 @@ const setDebug = () => {
       glyph.update({ letterSpacing: PARAMS.letterSpacing })
     });
 
-  pane
-    .addBinding(
-      PARAMS,
-      'lineHeight',
-      {
-        step: 1
-      }
-    )
-    .on('change', () => {
-      glyph.update({ lineHeight: PARAMS.lineHeight })
-    });
+  // pane
+  //   .addBinding(
+  //     PARAMS,
+  //     'lineHeight',
+  //     {
+  //       step: 1
+  //     }
+  //   )
+  //   .on('change', () => {
+  //     glyph.update({ lineHeight: PARAMS.lineHeight })
+  //   });
+  // pane
+  //   .addBinding(PARAMS, 'align', {
+  //     label: 'textAlign',
+  //     options: {
+  //       left: 'left',
+  //       center: 'center',
+  //       right: 'right'
+  //     },
+  //   })
+  //   .on('change', () => {
+  //     glyph.update({ align: PARAMS.align })
+  //   });
   pane
     .addBinding(PARAMS, 'anchor', {
       x: { step: 0.01, min: 0, max: 1 },
