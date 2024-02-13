@@ -70,10 +70,11 @@ class Glyph extends Object3D {
   }
 
   update(params = {}) {
-    const { text, letterSpacing } = params;
+    const { text, letterSpacing, lineHeight } = params;
     const { mesh, geometry, anchor } = this;
     if (text) geometry.update(text);
     if (letterSpacing) geometry.update({ letterSpacing })
+    if (lineHeight) geometry.update({ lineHeight })
     mesh.position.x = -mesh.geometry.layout.width * anchor.x;
     mesh.position.y = mesh.geometry.layout.height * (1.0 - anchor.y);
   }

@@ -27,6 +27,7 @@ document.body.appendChild(renderer.domElement);
 
 const PARAMS = {
   text: 'LO-VÉ.',
+  // text: 'LO-VÉ.\r\nLove\r\nLO-VÉ.\r\nLove',
   anchor: {
     x: 0.5,
     y: 0.5
@@ -34,7 +35,7 @@ const PARAMS = {
   color: 0xece9e3,
   // width: null,
   letterSpacing: 0,
-  // lineHeight
+  lineHeight: font.common.lineHeight,
 };
 
 const setDebug = () => {
@@ -59,10 +60,25 @@ const setDebug = () => {
     .addBinding(
       PARAMS,
       'letterSpacing',
+      {
+        step: 1
+      }
     )
     .on('change', () => {
       // glyph.material.uniforms.color.value = new THREE.Color(PARAMS.color)
       glyph.update({ letterSpacing: PARAMS.letterSpacing })
+    });
+
+  pane
+    .addBinding(
+      PARAMS,
+      'lineHeight',
+      {
+        step: 1
+      }
+    )
+    .on('change', () => {
+      glyph.update({ lineHeight: PARAMS.lineHeight })
     });
   pane
     .addBinding(PARAMS, 'anchor', {
