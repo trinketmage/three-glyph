@@ -30,7 +30,11 @@ const PARAMS = {
   anchor: {
     x: 0.5,
     y: 0.5
-  }
+  },
+  color: 0xece9e3,
+  // width: null,
+  letterSpacing: 0,
+  // lineHeight
 };
 
 const setDebug = () => {
@@ -38,6 +42,27 @@ const setDebug = () => {
     .addBinding(PARAMS, 'text')
     .on('change', () => {
       glyph.update({ text: PARAMS.text })
+    });
+  pane
+    .addBinding(
+      PARAMS,
+      'color',
+      {
+        label: 'color',
+        view: 'color'
+      }
+    )
+    .on('change', () => {
+      glyph.material.uniforms.color.value = new THREE.Color(PARAMS.color)
+    });
+  pane
+    .addBinding(
+      PARAMS,
+      'letterSpacing',
+    )
+    .on('change', () => {
+      // glyph.material.uniforms.color.value = new THREE.Color(PARAMS.color)
+      glyph.update({ letterSpacing: PARAMS.letterSpacing })
     });
   pane
     .addBinding(PARAMS, 'anchor', {
@@ -72,7 +97,12 @@ const onLoaded = () => {
     text: PARAMS.text,
     font,
     map: texture,
-    color: new THREE.Color(0xece9e3)
+    color: new THREE.Color(PARAMS.color),
+    // width (number, optional) the desired width of the text box, causes word-wrapping and clipping in "pre" mode. Leave as undefined to remove word-wrapping (default behaviour)
+    // textAlign (string) can be "left", "center" or "right" (default: left)
+    // width: PARAMS.width,
+    letterSpacing: PARAMS.letterSpacing,
+    // lineHeight: PARAMS.lineHeight
   });
   // glyph.children[0].material.map = textureLoader.load( "/UVChecker.png");
 

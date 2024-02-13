@@ -15,11 +15,11 @@ class Glyph extends Object3D {
 	constructor(params) {
 		super();
 
-    const { geometry, material, text, font, map, negate, color } = params;
-
+    const { geometry, material, text, font, letterSpacing, map, negate, color } = params;
     this.geometry = geometry || new GlyphGeometry({
       text,
-      font
+      font,
+      letterSpacing
     });
 
     if (material && material.uniforms.map) {
@@ -70,9 +70,10 @@ class Glyph extends Object3D {
   }
 
   update(params = {}) {
-    const { text } = params;
+    const { text, letterSpacing } = params;
     const { mesh, geometry, anchor } = this;
     if (text) geometry.update(text);
+    if (letterSpacing) geometry.update({ letterSpacing })
     mesh.position.x = -mesh.geometry.layout.width * anchor.x;
     mesh.position.y = mesh.geometry.layout.height * (1.0 - anchor.y);
   }
