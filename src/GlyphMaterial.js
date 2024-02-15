@@ -59,7 +59,7 @@ const GlyphShader = {
 			#include <glyph_negate>
 			
 			float sigDist = median(s.r, s.g, s.b) - 0.5;
-			float alpha = clamp(sigDist/fwidth(sigDist) + 0.5, 0.0, 1.0);;
+			float alpha = clamp(sigDist/fwidth(sigDist) + 0.5, 0.0, 1.0);
 
 			myOutputColor = vec4(color, alpha);
 		}
