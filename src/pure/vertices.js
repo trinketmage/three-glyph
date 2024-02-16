@@ -89,6 +89,7 @@ export const positions = function positions(glyphs) {
 };
 
 export const indices = function indices(glyphs) {
+  console.log(glyphs);
   var indices = new Float32Array(glyphs.length * 4);
   var i = 0;
   var weightI = 0;
