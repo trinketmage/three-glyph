@@ -4,6 +4,7 @@
   <a href="https://www.npmjs.com/package/three-glyph"><img src="https://img.shields.io/npm/v/three-glyph" alt="Version"></a>
   <a href="https://www.npmjs.com/package/three-glyph"><img src="https://img.shields.io/npm/dy/three-glyph" alt="Downloads"></a>
   <a href="https://github.com/trinketmage/three-glyph/issues"><img src="https://img.shields.io/github/issues/trinketmage/three-glyph" alt="Issues"></a>
+  <a href="https://github.com/trinketmage/three-glyph/blob/main/LICENSE"><img src="https://img.shields.io/github/license/trinketmage/three-glyph" alt="License"></a>
   <a href="https://twitter.com/remuemeninge"><img src="https://img.shields.io/twitter/follow/remuemeninge?style=social" alt="Twitter"></a>
 </p>
 
