@@ -44,11 +44,13 @@
   },
   "homepage": "https://github.com/trinketmage/three-glyph#readme",
   "dependencies": {
-    "three": "^0.161.0",
     "quad-indices": "^2.0.1",
+    "three": "^0.161.0",
     "word-wrapper": "^1.0.7"
   },
   "devDependencies": {
+    "sword": "^0.4.4",
+    "tweakpane": "^4.0.3",
     "vite": "^5.1.0"
   }
 }

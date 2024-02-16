@@ -5,6 +5,8 @@ import { Glyph, GlyphGeometry, GlyphMaterial } from '../../src/index.js'
 import font from './Love.json'
 
 import { Pane } from 'tweakpane';
+import { responsive} from 'sword'
+console.log(responsive);
 
 const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 3000);
 camera.position.z = 500;
@@ -37,6 +39,7 @@ const PARAMS = {
   align: 'left',
   // width: null,
   letterSpacing: 0,
+  progress: 0,
   lineHeight: font.common.lineHeight,
 };
 
@@ -69,6 +72,20 @@ const setDebug = () => {
     .on('change', () => {
       // glyph.material.uniforms.color.value = new THREE.Color(PARAMS.color)
       glyph.update({ letterSpacing: PARAMS.letterSpacing })
+    });
+
+  pane
+    .addBinding(
+      PARAMS,
+      'progress',
+      {
+        step: 0.01,
+        min: 0,
+        max: 1,
+      }
+    )
+    .on('change', () => {
+      glyph.material.uniforms.progress.value = PARAMS.progress
     });
 
   // pane
