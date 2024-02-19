@@ -117,7 +117,8 @@ class GlyphMaterial extends ShaderMaterial {
 
 		// TODO refactory CacheKey
 		this.customProgramCacheKey = function() { 
-			return parameters.negate;
+			const { addons = {} } = parameters;
+			return addons.negate;
 		}
     this.onBeforeCompile = shader => {
 			let { fragmentShader: fragment, vertexShader: vertex } = shader;
