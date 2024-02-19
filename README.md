@@ -54,7 +54,7 @@ npm install -S three-glyph
   const texture = this.textureLoader.load( "./Roboto-Regular.png");
   
   manager.onLoad = function() {
-    ...
+    // Draw glpyhs
   };
 ```
 #### Draw glyphs
