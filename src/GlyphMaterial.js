@@ -129,7 +129,7 @@ class GlyphMaterial extends ShaderMaterial {
 	}
 
 	computeChunks(parameters) {
-		const { addons } = parameters;
+		const { addons = {} } = parameters;
 		const { negate, progress, shaderChunks } = addons;
 		this.chunks = defaultChunks;
 

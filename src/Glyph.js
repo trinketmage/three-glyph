@@ -85,7 +85,7 @@ class Glyph extends Object3D {
 
   update(params = {}) {
     const entries = [ 'text', 'letterSpacing', 'lineHeight', 'align' ];
-    const { mesh, geometry, anchor, material, addons } = this;
+    const { mesh, geometry, anchor, material, addons = {} } = this;
     const opt = {
     }
     entries.forEach((entry) => {
