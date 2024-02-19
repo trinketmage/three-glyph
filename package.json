@@ -1,6 +1,6 @@
 {
   "name": "three-glyph",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Provide geometry and material in THREE.js for MSDF (multi-channel signed distance fields) glyph and more",
   "main": "src/index.js",
   "scripts": {
@@ -49,6 +49,7 @@
     "word-wrapper": "^1.0.7"
   },
   "devDependencies": {
+    "sword": "^0.4.4",
     "tweakpane": "^4.0.3",
     "vite": "^5.1.0"
   }

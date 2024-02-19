@@ -28,7 +28,7 @@ window.addEventListener('resize', handleResize, false);
 document.body.appendChild(renderer.domElement);
 
 const PARAMS = {
-  text: 'LO-VÉ.',
+  text: 'LOVERS',
   // text: 'LO-VÉ.\r\nLove\r\nLO-VÉ.\r\nLove',
   anchor: {
     x: 0.5,
@@ -38,6 +38,8 @@ const PARAMS = {
   align: 'left',
   // width: null,
   letterSpacing: 0,
+  progress: 0.5,
+  opacity: 1,
   lineHeight: font.common.lineHeight,
 };
 
@@ -47,7 +49,12 @@ const setDebug = () => {
     .on('change', () => {
       glyph.update({ text: PARAMS.text })
     });
-  pane
+
+  const basic = pane.addFolder({
+    title: 'Basic',
+  });
+  
+  basic
     .addBinding(
       PARAMS,
       'color',
@@ -59,7 +66,7 @@ const setDebug = () => {
     .on('change', () => {
       glyph.material.uniforms.color.value = new THREE.Color(PARAMS.color)
     });
-  pane
+  basic
     .addBinding(
       PARAMS,
       'letterSpacing',
@@ -70,6 +77,20 @@ const setDebug = () => {
     .on('change', () => {
       // glyph.material.uniforms.color.value = new THREE.Color(PARAMS.color)
       glyph.update({ letterSpacing: PARAMS.letterSpacing })
+    });
+
+  basic
+    .addBinding(
+      PARAMS,
+      'opacity',
+      {
+        step: 0.01,
+        min: 0,
+        max: 1,
+      }
+    )
+    .on('change', () => {
+      glyph.material.uniforms.opacity.value = PARAMS.opacity
     });
 
   // pane
@@ -95,7 +116,7 @@ const setDebug = () => {
   //   .on('change', () => {
   //     glyph.update({ align: PARAMS.align })
   //   });
-  pane
+  basic
     .addBinding(PARAMS, 'anchor', {
       x: { step: 0.01, min: 0, max: 1 },
       y: { step: 0.01, min: 0, max: 1, inverted: true },
@@ -105,7 +126,7 @@ const setDebug = () => {
       glyph.anchor.set(x, y)
       glyph.update();
     });
-  const folder = pane.addFolder({
+  const folder = basic.addFolder({
     title: "Glyph presets",
     expanded: false
   });
@@ -121,6 +142,21 @@ const setDebug = () => {
         pane.refresh();
       });
   });
+
+  glyph.material.uniforms.progress.value = PARAMS.progress;
+  pane
+    .addBinding(
+      PARAMS,
+      'progress',
+      {
+        step: 0.01,
+        min: 0,
+        max: 1,
+      }
+    )
+    .on('change', () => {
+      glyph.material.uniforms.progress.value = PARAMS.progress
+    });
 }
 
 const onLoaded = () => {
@@ -133,6 +169,31 @@ const onLoaded = () => {
     // textAlign (string) can be "left", "center" or "right" (default: left)
     // width: PARAMS.width,
     letterSpacing: PARAMS.letterSpacing,
+    progress: true,
+    shaderChunks: {
+      'position_pars_vertex': `
+        float quadraticOut(float t) {
+          return -t * (t - 2.0);
+        }
+        float cubicOut(float t) {
+          float f = t - 1.0;
+          return f * f * f + 1.0;
+        }
+      `,
+      'transformed_vertex': `
+        transformed.x += 260.0 * 0.5 * (1.0 - quadraticOut(vProgress));
+        transformed.z -= 260.0 * 0.5 * (1.0 - cubicOut(vProgress));
+      `,
+      'color_fragment':  `
+        diffuseColor = vec3(
+          color.x,
+          color.y * vProgress,
+          color.z * vProgress
+        );
+      `,
+      'alpha_fragment':  `alpha *= vProgress * opacity;`,
+    }
+    // negate: true,
     // lineHeight: PARAMS.lineHeight
   });
   // glyph.children[0].material.map = textureLoader.load( "/UVChecker.png");
