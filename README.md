@@ -8,6 +8,8 @@
   <a href="https://twitter.com/remuemeninge"><img src="https://img.shields.io/twitter/follow/remuemeninge?style=social" alt="Twitter"></a>
 </p>
 
+[![image description](love.png)](https://three-glyph-examples.web.app/)
+
 MSDF Bitmap Fonts implementation for three.js.
 
 ES6 adaptation of [three-bmfont-text](https://github.com/Experience-Monks/three-bmfont-text) and more..
@@ -18,8 +20,6 @@ Signed Distance Fields (SDF) are a method of reproducing vector shapes from a te
 
 While SDFs offer efficient and high-quality rendering of simple shapes, Multi-channel Signed Distance Fields (MSDF) extend this capability to capture intricate details and sharp features in complex shapes, making them suitable for a wider range of applications, including text rendering, iconography, and graphic design.
 To learn more about MSDFs you can read [Viktor Chlumský Master's thesis](https://github.com/Chlumsky/msdfgen/files/3050967/thesis.pdf) and check out [his github](https://github.com/Chlumsky/msdfgen).
-
-[![image description](love.png)](https://three-glyph-examples.web.app/)
 
 ## Demo
  * [Basic](https://codepen.io/trinketmage/full/NWJJQWJ)
@@ -65,6 +65,7 @@ npm install -S three-glyph
     font,
     map: texture
   });
+  scene.add(glyph);
 ```
 
 ## Roadmap
