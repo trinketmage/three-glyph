@@ -32,6 +32,7 @@ ES6 adaptation of [three-bmfont-text](https://github.com/Experience-Monks/three-
  * [ ] Example with custom map texture (video)
  * [ ] Example with [alphaMap per character](https://thre-glyph-animate-tool.web.app/) example with tutorial.
  * [ ] Right-to-left layout
+ * [ ] Responsive : html context mirror layout
  * [ ] Documentation
  * [x] Negate map support
 

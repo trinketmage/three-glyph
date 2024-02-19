@@ -38,15 +38,8 @@ const GlyphShader = {
 		out vec2 vUv;
 		out vec2 vGuv;
 		
+		#include <position_pars_vertex>
 		#include <progress_pars_vertex>
-		
-		float quadraticOut(float t) {
-			return -t * (t - 2.0);
-		}
-		float cubicOut(float t) {
-			float f = t - 1.0;
-			return f * f * f + 1.0;
-		}
 		
 		void main() {
 			vUv = uv;

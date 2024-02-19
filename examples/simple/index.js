@@ -48,7 +48,12 @@ const setDebug = () => {
     .on('change', () => {
       glyph.update({ text: PARAMS.text })
     });
-  pane
+
+  const basic = pane.addFolder({
+    title: 'Basic',
+  });
+  
+  basic
     .addBinding(
       PARAMS,
       'color',
@@ -60,7 +65,7 @@ const setDebug = () => {
     .on('change', () => {
       glyph.material.uniforms.color.value = new THREE.Color(PARAMS.color)
     });
-  pane
+  basic
     .addBinding(
       PARAMS,
       'letterSpacing',
@@ -73,7 +78,7 @@ const setDebug = () => {
       glyph.update({ letterSpacing: PARAMS.letterSpacing })
     });
 
-  pane
+  basic
     .addBinding(
       PARAMS,
       'opacity',
@@ -110,7 +115,7 @@ const setDebug = () => {
   //   .on('change', () => {
   //     glyph.update({ align: PARAMS.align })
   //   });
-  pane
+  basic
     .addBinding(PARAMS, 'anchor', {
       x: { step: 0.01, min: 0, max: 1 },
       y: { step: 0.01, min: 0, max: 1, inverted: true },
@@ -120,7 +125,7 @@ const setDebug = () => {
       glyph.anchor.set(x, y)
       glyph.update();
     });
-  const folder = pane.addFolder({
+  const folder = basic.addFolder({
     title: "Glyph presets",
     expanded: false
   });
@@ -165,6 +170,15 @@ const onLoaded = () => {
     letterSpacing: PARAMS.letterSpacing,
     progress: true,
     shaderChunks: {
+      'position_pars_vertex': `
+        float quadraticOut(float t) {
+          return -t * (t - 2.0);
+        }
+        float cubicOut(float t) {
+          float f = t - 1.0;
+          return f * f * f + 1.0;
+        }
+      `,
       'transformed_vertex': `
         transformed.x += 260.0 * 0.5 * (1.0 - quadraticOut(vProgress));
         transformed.z -= 260.0 * 0.5 * (1.0 - cubicOut(vProgress));
