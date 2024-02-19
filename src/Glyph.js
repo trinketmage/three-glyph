@@ -24,6 +24,7 @@ class Glyph extends Object3D {
 
       negate,
       progress,
+      shaderChunks,
 
       geometry,
       material
@@ -46,7 +47,8 @@ class Glyph extends Object3D {
       this.material = new GlyphMaterial({
         negate,
         progress,
-        uniforms
+        uniforms,
+        shaderChunks
       });
     }
 

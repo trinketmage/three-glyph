@@ -137,6 +137,7 @@ const setDebug = () => {
       });
   });
 
+  glyph.material.uniforms.progress.value = PARAMS.progress;
   pane
     .addBinding(
       PARAMS,
@@ -163,6 +164,20 @@ const onLoaded = () => {
     // width: PARAMS.width,
     letterSpacing: PARAMS.letterSpacing,
     progress: true,
+    shaderChunks: {
+      'transformed_vertex': `
+        transformed.x += 260.0 * 0.5 * (1.0 - quadraticOut(vProgress));
+        transformed.z -= 260.0 * 0.5 * (1.0 - cubicOut(vProgress));
+      `,
+      'color_fragment':  `
+        diffuseColor = vec3(
+          color.x,
+          color.y * vProgress,
+          color.z * vProgress
+        );
+      `,
+      'alpha_fragment':  `alpha *= vProgress * opacity;`,
+    }
     // negate: true,
     // lineHeight: PARAMS.lineHeight
   });

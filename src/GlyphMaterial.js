@@ -4,6 +4,13 @@ import { defaultChunks, negateChunks, progressChunks } from './pure/chunks.js';
 
 const includePattern = /^[ \t]*#include +<([\w\d./]+)>/gm;
 
+const progressUniforms = {
+	total: { value: 6 },
+	progress: { value: 0 },
+	duration: { value: 1 },
+	stagger: { value: 0.1 }
+}
+
 const GlyphShader = {
 
 	name: 'Glyph',
@@ -16,10 +23,8 @@ const GlyphShader = {
 
 	uniforms: {
 		map: { value: null },
-		color: { value: new Color(0xece9e3) },
+		color: { value: new Color(0xffffff) },
 		opacity: { value: 1 },
-		total: { value: 6 },
-		progress: { value: 0.5 }
 	},
 
 	vertexShader: /* glsl */`
@@ -52,8 +57,6 @@ const GlyphShader = {
 			vec3 transformed = vec3( position );
 
 			#include <transformed_vertex>
-			// transformed.x += 260.0 * 0.5 * (1.0 - quadraticOut(vProgress));
-			// transformed.z -= 260.0 * 0.5 * (1.0 - cubicOut(vProgress));
 
 			vec4 mvPosition = vec4(transformed, 1.0);
 			mvPosition = modelViewMatrix * mvPosition;
@@ -107,6 +110,7 @@ class GlyphMaterial extends ShaderMaterial {
 		GlyphShader.uniforms = UniformsUtils.merge( [
 			GlyphShader.uniforms,
 			parameters.uniforms,
+			parameters.progress ? progressUniforms : {}
 		]);
 
 		super(GlyphShader);
@@ -131,7 +135,7 @@ class GlyphMaterial extends ShaderMaterial {
 	}
 
 	computeChunks(parameters) {
-		const { negate, progress } = parameters;
+		const { negate, progress, shaderChunks } = parameters;
 		this.chunks = defaultChunks;
 
 		if (negate) {
@@ -140,6 +144,10 @@ class GlyphMaterial extends ShaderMaterial {
 
 		if (progress) {
 			Object.assign(this.chunks, progressChunks);
+		}
+
+		if (shaderChunks) {
+			Object.assign(this.chunks, shaderChunks);
 		}
 	}
 	

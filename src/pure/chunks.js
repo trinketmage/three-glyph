@@ -4,28 +4,24 @@ export const defaultChunks = {
 	`,
 	'color_fragment':  `
 		diffuseColor = color;
-		// diffuseColor = vec3(
-		// 	color.x,
-		// 	color.y * vProgress,
-		// 	color.z * vProgress
-		// );
 	`,
 	'alpha_pars_fragment':  `
 		uniform float opacity;
 	`,
 	'alpha_fragment':  `alpha *= opacity;`,
-  // 'alpha_fragment':  `alpha *= vProgress * opacity;`,
 };
 
 export const progressChunks = {
 	'progress_pars_vertex':  `
-  uniform float progress;
-  uniform float total;
+    uniform float progress;
+    uniform float total;
+    uniform float duration;
+    uniform float stagger;
 		in float index;
 		out float vProgress;
 
     // source https://github.com/trinketmage/sword
-		float stagger(float duration, float stagger, float total, float index, float progress) {
+		float computeStagger(float duration, float stagger, float total, float index, float progress) {
 			float staggers = (total * stagger);
 			float maxDuration = duration + staggers;
 			float space = duration / maxDuration;
@@ -34,7 +30,7 @@ export const progressChunks = {
 		}
 	`,
 	'progress_vertex':  `
-		vProgress = stagger(1.0, 0.1, total, index, progress);
+		vProgress = computeStagger(duration, stagger, total, index, progress);
 	`,
 	'progress_pars_fragment':  `in float vProgress;`,
 };
