@@ -30,14 +30,14 @@ To learn more about MSDFs you can read [Viktor Chlumský Master's thesis](https:
  * [Per index](https://codepen.io/trinketmage/full/yLwwwKr)
 
 ## Getting Started
-```
+```sh
 npm install -S three-glyph
 ```
 
 ## Usage
 
 ### Basic
-```
+```js
   import * as THREE from "three";
   import { Glyph } from "three-glyph";
   
