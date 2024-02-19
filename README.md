@@ -31,14 +31,36 @@ To learn more about MSDFs you can read [Viktor Chlumský Master's thesis](https:
 
 ## Getting Started
 ```
-npm install three-glyph
+npm install -S three-glyph
 ```
 
 ## Usage
 
 ### Basic
 ```
-npm install three-glyph
+  import * as THREE from "three";
+  import { Glyph } from "three-glyph";
+  
+  const manager = new THREE.LoadingManager();
+  const fontLoader = new FontLoader(manager);
+  const textureLoader = new THREE.TextureLoader(manager);
+
+  const font = null;
+  fontLoader.load(
+    './Roboto-Regular.json',
+    ( raw ) => {
+      font = raw.data;
+    },
+  );
+  const texture = this.textureLoader.load( "./Roboto-Regular.png");
+  
+  manager.onLoad = function() {
+    const glyph = new Glyph({
+      text: 'Hello world',
+      font,
+      map: texture,
+    });
+  };
 ```
 
 ## Roadmap
