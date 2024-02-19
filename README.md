@@ -12,6 +12,9 @@
 
 ES6 adaptation of [three-bmfont-text](https://github.com/Experience-Monks/three-bmfont-text) and more..
 
+Signed distance fields are a method of reproducing vector shapes from a texture representation, popularized in [this paper by Valve](https://steamcdn-a.akamaihd.net/apps/valve/2007/SIGGRAPH2007_AlphaTestedMagnification.pdf). The integration of signed distance fields into [AngelCode BMFont files](https://www.angelcode.com/products/bmfont/) enables developers to create high-quality bitmap fonts with smooth, scalable outlines.
+
+
 ## Demo
  * [Basic](https://codepen.io/trinketmage/full/NWJJQWJ)
  * [Font atlas previewer](https://codepen.io/trinketmage/pen/KKEGOjx)
@@ -19,6 +22,18 @@ ES6 adaptation of [three-bmfont-text](https://github.com/Experience-Monks/three-
 
 ### Advanced
  * [Per index](https://codepen.io/trinketmage/full/yLwwwKr)
+
+## Getting Started
+```
+npm install three-glyph
+```
+
+## Usage
+
+### Basic
+```
+npm install three-glyph
+```
 
 ## Roadmap
  * [x] Basic GlyphGeometry
