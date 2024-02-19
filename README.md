@@ -40,6 +40,7 @@ npm install -S three-glyph
 #### Load the font
 ```js
   import * as THREE from "three";
+  import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
   import { Glyph } from "three-glyph";
   
   const manager = new THREE.LoadingManager();
