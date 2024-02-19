@@ -5,8 +5,6 @@ import { Glyph, GlyphGeometry, GlyphMaterial } from '../../src/index.js'
 import font from './Love.json'
 
 import { Pane } from 'tweakpane';
-import { responsive} from 'sword'
-console.log(responsive);
 
 const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 3000);
 camera.position.z = 500;
@@ -29,7 +27,7 @@ window.addEventListener('resize', handleResize, false);
 document.body.appendChild(renderer.domElement);
 
 const PARAMS = {
-  text: 'LO-VÉ.',
+  text: 'LOVERS',
   // text: 'LO-VÉ.\r\nLove\r\nLO-VÉ.\r\nLove',
   anchor: {
     x: 0.5,
@@ -39,7 +37,8 @@ const PARAMS = {
   align: 'left',
   // width: null,
   letterSpacing: 0,
-  progress: 0,
+  progress: 0.5,
+  opacity: 1,
   lineHeight: font.common.lineHeight,
 };
 
@@ -77,7 +76,7 @@ const setDebug = () => {
   pane
     .addBinding(
       PARAMS,
-      'progress',
+      'opacity',
       {
         step: 0.01,
         min: 0,
@@ -85,7 +84,7 @@ const setDebug = () => {
       }
     )
     .on('change', () => {
-      glyph.material.uniforms.progress.value = PARAMS.progress
+      glyph.material.uniforms.opacity.value = PARAMS.opacity
     });
 
   // pane
@@ -137,6 +136,20 @@ const setDebug = () => {
         pane.refresh();
       });
   });
+
+  pane
+    .addBinding(
+      PARAMS,
+      'progress',
+      {
+        step: 0.01,
+        min: 0,
+        max: 1,
+      }
+    )
+    .on('change', () => {
+      glyph.material.uniforms.progress.value = PARAMS.progress
+    });
 }
 
 const onLoaded = () => {
@@ -149,6 +162,8 @@ const onLoaded = () => {
     // textAlign (string) can be "left", "center" or "right" (default: left)
     // width: PARAMS.width,
     letterSpacing: PARAMS.letterSpacing,
+    progress: true,
+    // negate: true,
     // lineHeight: PARAMS.lineHeight
   });
   // glyph.children[0].material.map = textureLoader.load( "/UVChecker.png");
