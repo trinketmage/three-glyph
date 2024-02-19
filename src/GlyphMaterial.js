@@ -100,10 +100,11 @@ const GlyphShader = {
 class GlyphMaterial extends ShaderMaterial {
 	
 	constructor( parameters ) {
+		const { addons } = parameters;
 		GlyphShader.uniforms = UniformsUtils.merge( [
 			GlyphShader.uniforms,
 			parameters.uniforms,
-			parameters.progress ? progressUniforms : {}
+			(addons && addons.progress) ? progressUniforms : {}
 		]);
 
 		super(GlyphShader);
@@ -128,7 +129,8 @@ class GlyphMaterial extends ShaderMaterial {
 	}
 
 	computeChunks(parameters) {
-		const { negate, progress, shaderChunks } = parameters;
+		const { addons } = parameters;
+		const { negate, progress, shaderChunks } = addons;
 		this.chunks = defaultChunks;
 
 		if (negate) {

@@ -22,12 +22,10 @@ class Glyph extends Object3D {
       map,
       color,
 
-      negate,
-      progress,
-      shaderChunks,
-
       geometry,
-      material
+      material,
+
+      addons
     } = params;
     this.geometry = geometry || new GlyphGeometry({
       text,
@@ -45,10 +43,8 @@ class Glyph extends Object3D {
         uniforms.color = new Uniform(color);
       }
       this.material = new GlyphMaterial({
-        negate,
-        progress,
+        addons,
         uniforms,
-        shaderChunks
       });
     }
 

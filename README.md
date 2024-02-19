@@ -13,9 +13,12 @@
 ES6 adaptation of [three-bmfont-text](https://github.com/Experience-Monks/three-bmfont-text) and more..
 
 ## Demo
- * [Example](https://three-glyph-examples.web.app/)
+ * [Basic](https://three-glyph-examples.web.app/)
  * [Font atlas previewer](https://codepen.io/trinketmage/pen/KKEGOjx)
  * [Animation example](https://thre-glyph-animate-tool.web.app/)
+
+### Advanced
+ * [Per index](https://codepen.io/trinketmage/full/yLwwwKr)
 
 ## Roadmap
  * [x] Basic GlyphGeometry
@@ -25,9 +28,9 @@ ES6 adaptation of [three-bmfont-text](https://github.com/Experience-Monks/three-
  * [x] Basic Glyph (Mesh)
  * [x] Glyph [anchorX and anchorY](https://protectwise.github.io/troika/troika-three-text/#anchorx)
  * [x] How to debug example
- * [ ] Shader "chunkification"
+ * [x] Shader "chunkification"
  * [ ] Handles per lines and per character's index
- * [ ] API animation per character
+ * [x] API animation per character
  * [ ] API animation per line
  * [ ] Example with custom map texture (video)
  * [ ] Example with [alphaMap per character](https://thre-glyph-animate-tool.web.app/) example with tutorial.

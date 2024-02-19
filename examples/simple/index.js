@@ -75,7 +75,6 @@ const setDebug = () => {
       }
     )
     .on('change', () => {
-      // glyph.material.uniforms.color.value = new THREE.Color(PARAMS.color)
       glyph.update({ letterSpacing: PARAMS.letterSpacing })
     });
 
@@ -169,32 +168,34 @@ const onLoaded = () => {
     // textAlign (string) can be "left", "center" or "right" (default: left)
     // width: PARAMS.width,
     letterSpacing: PARAMS.letterSpacing,
-    progress: true,
-    shaderChunks: {
-      'position_pars_vertex': `
-        float quadraticOut(float t) {
-          return -t * (t - 2.0);
-        }
-        float cubicOut(float t) {
-          float f = t - 1.0;
-          return f * f * f + 1.0;
-        }
-      `,
-      'transformed_vertex': `
-        transformed.x += 260.0 * 0.5 * (1.0 - quadraticOut(vProgress));
-        transformed.z -= 260.0 * 0.5 * (1.0 - cubicOut(vProgress));
-      `,
-      'color_fragment':  `
-        diffuseColor = vec3(
-          color.x,
-          color.y * vProgress,
-          color.z * vProgress
-        );
-      `,
-      'alpha_fragment':  `alpha *= vProgress * opacity;`,
-    }
-    // negate: true,
     // lineHeight: PARAMS.lineHeight
+    addons: {
+      // negate: true,
+      progress: true,
+      shaderChunks: {
+        'position_pars_vertex': `
+          float quadraticOut(float t) {
+            return -t * (t - 2.0);
+          }
+          float cubicOut(float t) {
+            float f = t - 1.0;
+            return f * f * f + 1.0;
+          }
+        `,
+        'transformed_vertex': `
+          transformed.x += 260.0 * 0.5 * (1.0 - quadraticOut(vProgress));
+          transformed.z -= 260.0 * 0.5 * (1.0 - cubicOut(vProgress));
+        `,
+        'color_fragment':  `
+          diffuseColor = vec3(
+            color.x,
+            color.y * vProgress,
+            color.z * vProgress
+          );
+        `,
+        'alpha_fragment':  `alpha *= vProgress * opacity;`,
+      },
+    }
   });
   // glyph.children[0].material.map = textureLoader.load( "/UVChecker.png");
 
