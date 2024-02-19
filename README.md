@@ -37,6 +37,7 @@ npm install -S three-glyph
 ## Usage
 
 ### Basic
+#### Load the font
 ```js
   import * as THREE from "three";
   import { Glyph } from "three-glyph";
@@ -48,19 +49,21 @@ npm install -S three-glyph
   const font = null;
   fontLoader.load(
     './Roboto-Regular.json',
-    ( raw ) => {
-      font = raw.data;
-    },
+    ( raw ) => { font = raw.data }
   );
   const texture = this.textureLoader.load( "./Roboto-Regular.png");
   
   manager.onLoad = function() {
-    const glyph = new Glyph({
-      text: 'Hello world',
-      font,
-      map: texture,
-    });
+    ...
   };
+```
+#### Draw glyphs
+```js
+  const glyph = new Glyph({
+    text: 'Hello world',
+    font,
+    map: texture
+  });
 ```
 
 ## Roadmap
