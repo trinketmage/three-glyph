@@ -5,7 +5,7 @@ import { defaultChunks, negateChunks, progressChunks } from './pure/chunks.js';
 const includePattern = /^[ \t]*#include +<([\w\d./]+)>/gm;
 
 const progressUniforms = {
-	total: { value: 6 },
+	total: { value: 0 },
 	progress: { value: 0 },
 	duration: { value: 1 },
 	stagger: { value: 0.1 }
