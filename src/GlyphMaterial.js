@@ -50,6 +50,8 @@ const GlyphShader = {
 			#include <progress_vertex>
 
 			vec3 transformed = vec3( position );
+
+			#include <transformed_vertex>
 			// transformed.x += 260.0 * 0.5 * (1.0 - quadraticOut(vProgress));
 			// transformed.z -= 260.0 * 0.5 * (1.0 - cubicOut(vProgress));
 
@@ -73,6 +75,7 @@ const GlyphShader = {
 		out vec4 myOutputColor;
 
 		#include <progress_pars_fragment>
+		#include <alpha_pars_fragment>
 		#include <color_pars_fragment>
 
 		float median(float r, float g, float b) {
@@ -90,7 +93,7 @@ const GlyphShader = {
 			alpha *= clamp(sigDist/fwidth(sigDist) + 0.5, 0.0, 1.0);
 			
 			#include <color_fragment>
-			#include <alphamap_fragment>
+			#include <alpha_fragment>
 
 			myOutputColor = vec4(diffuseColor, alpha);
 		}
@@ -108,20 +111,13 @@ class GlyphMaterial extends ShaderMaterial {
 
 		super(GlyphShader);
 		
-		this.chunks = defaultChunks;
-
-		if (parameters.negate) {
-			Object.assign(this.chunks, negateChunks);
-		}
-
-		if (parameters.progress) {
-			Object.assign(this.chunks, progressChunks);
-		}
+		this.computeChunks(parameters);
 
 		this.isRawShaderMaterial = true;
 
 		this.type = 'GlyphMaterial';
 
+		// TODO refactory CacheKey
 		this.customProgramCacheKey = function() { 
 			return parameters.negate;
 		}
@@ -132,6 +128,19 @@ class GlyphMaterial extends ShaderMaterial {
 			fragment = this.resolveIncludes(fragment);
 			shader.fragmentShader = fragment;
     };
+	}
+
+	computeChunks(parameters) {
+		const { negate, progress } = parameters;
+		this.chunks = defaultChunks;
+
+		if (negate) {
+			Object.assign(this.chunks, negateChunks);
+		}
+
+		if (progress) {
+			Object.assign(this.chunks, progressChunks);
+		}
 	}
 	
 	resolveIncludes( string ) {

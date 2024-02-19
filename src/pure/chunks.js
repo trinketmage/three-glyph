@@ -1,24 +1,26 @@
 export const defaultChunks = {
-	'alphamap_fragment':  `alpha *= vProgress * opacity;`,
-	// 'alphamap_fragment':  `alpha *= opacity;`,
 	'color_pars_fragment':  `
 		uniform vec3 color;
-		uniform float opacity;
 	`,
 	'color_fragment':  `
-		// diffuseColor = color;
-		diffuseColor = vec3(
-			color.x,
-			color.y * vProgress,
-			color.z * vProgress
-		);
+		diffuseColor = color;
+		// diffuseColor = vec3(
+		// 	color.x,
+		// 	color.y * vProgress,
+		// 	color.z * vProgress
+		// );
 	`,
+	'alpha_pars_fragment':  `
+		uniform float opacity;
+	`,
+	'alpha_fragment':  `alpha *= opacity;`,
+  // 'alpha_fragment':  `alpha *= vProgress * opacity;`,
 };
 
 export const progressChunks = {
 	'progress_pars_vertex':  `
-		uniform float progress;
-		uniform float total;
+  uniform float progress;
+  uniform float total;
 		in float index;
 		out float vProgress;
 
