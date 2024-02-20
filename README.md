@@ -86,6 +86,7 @@ npm install -S three-glyph
  * [ ] Responsive : html context mirror layout
  * [ ] How to generate a MSDF Bitmap font
  * [ ] Font tweakings process
+ * [ ] MTSDF support
  * [ ] Documentation
  * [x] Negate map support
 

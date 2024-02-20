@@ -76,18 +76,18 @@ const GlyphShader = {
 
 		float median(float r, float g, float b) {
 			return max(min(r, g), min(max(r, g), b));
-		}
+		}	
 
 		void main() {
 			vec3 diffuseColor = vec3(1.0);
 			float alpha = 1.0;
 
-			vec3 s = texture(map, vGuv).rgb;
+			vec3 msd = texture(map, vGuv).rgb;
 			#include <negate_fragment>
 			
-			float sigDist = median(s.r, s.g, s.b) - 0.5;
-			alpha *= clamp(sigDist/fwidth(sigDist) + 0.5, 0.0, 1.0);
-			
+			float sd = median(msd.r, msd.g, msd.b) - 0.5;
+			alpha *= clamp(sd/fwidth(sd) + 0.5, 0.0, 1.0);
+
 			#include <color_fragment>
 			#include <alpha_fragment>
 
