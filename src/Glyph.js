@@ -15,7 +15,21 @@ class Glyph extends Object3D {
 	constructor(params) {
 		super();
 
-    const { geometry, material, text, font, letterSpacing, map, negate, color } = params;
+    const {
+      text,
+      font,
+      letterSpacing,
+      map,
+      color,
+
+      geometry,
+      material,
+
+      addons
+    } = params;
+
+    this.addons = addons;
+
     this.geometry = geometry || new GlyphGeometry({
       text,
       font,
@@ -32,8 +46,8 @@ class Glyph extends Object3D {
         uniforms.color = new Uniform(color);
       }
       this.material = new GlyphMaterial({
-        negate,
-        uniforms
+        addons,
+        uniforms,
       });
     }
 
@@ -71,7 +85,7 @@ class Glyph extends Object3D {
 
   update(params = {}) {
     const entries = [ 'text', 'letterSpacing', 'lineHeight', 'align' ];
-    const { mesh, geometry, anchor } = this;
+    const { mesh, geometry, anchor, material, addons = {} } = this;
     const opt = {
     }
     entries.forEach((entry) => {
@@ -80,6 +94,10 @@ class Glyph extends Object3D {
     geometry.update(opt);
     mesh.position.x = -mesh.geometry.layout.width * anchor.x;
     mesh.position.y = mesh.geometry.layout.height * (1.0 - anchor.y);
+
+    if (addons.progress) {
+      material.uniforms.total.value = geometry.layout.glyphs.length;
+    }
   }
 
   dispose() {

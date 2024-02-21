@@ -10,12 +10,63 @@
 
 [![image description](love.png)](https://three-glyph-examples.web.app/)
 
+MSDF Bitmap Fonts implementation for three.js.
+
 ES6 adaptation of [three-bmfont-text](https://github.com/Experience-Monks/three-bmfont-text) and more..
 
+## Context
+
+Signed Distance Fields (SDF) are a method of reproducing vector shapes from a texture representation, popularized in [this paper by Valve](https://steamcdn-a.akamaihd.net/apps/valve/2007/SIGGRAPH2007_AlphaTestedMagnification.pdf). The integration of signed distance fields into [AngelCode BMFont files](https://www.angelcode.com/products/bmfont/) enables developers to create high-quality bitmap fonts with smooth, scalable outlines in a wide range of applications, offering both performance and visual fidelity benefits.
+
+While SDFs offer efficient and high-quality rendering of simple shapes, Multi-channel Signed Distance Fields (MSDF) extend this capability to capture intricate details and sharp features in complex shapes, making them suitable for a wider range of applications, including text rendering, iconography, and graphic design.
+To learn more about MSDFs you can read [Viktor Chlumský Master's thesis](https://github.com/Chlumsky/msdfgen/files/3050967/thesis.pdf) and check out [his github](https://github.com/Chlumsky/msdfgen).
+
 ## Demo
- * [Example](https://three-glyph-examples.web.app/)
+ * [Basic](https://codepen.io/trinketmage/full/NWJJQWJ)
  * [Font atlas previewer](https://codepen.io/trinketmage/pen/KKEGOjx)
  * [Animation example](https://thre-glyph-animate-tool.web.app/)
+
+### Advanced
+ * [Per index](https://codepen.io/trinketmage/full/yLwwwKr)
+
+## Getting Started
+```sh
+npm install -S three-glyph
+```
+
+## Usage
+
+### Basic
+#### Load the font
+```js
+  import * as THREE from "three";
+  import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
+  import { Glyph } from "three-glyph";
+  
+  const manager = new THREE.LoadingManager();
+  const fontLoader = new FontLoader(manager);
+  const textureLoader = new THREE.TextureLoader(manager);
+
+  const font = null;
+  fontLoader.load(
+    './Roboto-Regular.json',
+    ( raw ) => { font = raw.data }
+  );
+  const texture = this.textureLoader.load( "./Roboto-Regular.png");
+  
+  manager.onLoad = function() {
+    // Draw glpyhs
+  };
+```
+#### Draw glyphs
+```js
+  const glyph = new Glyph({
+    text: 'Hello world',
+    font,
+    map: texture
+  });
+  scene.add(glyph);
+```
 
 ## Roadmap
  * [x] Basic GlyphGeometry
@@ -25,13 +76,17 @@ ES6 adaptation of [three-bmfont-text](https://github.com/Experience-Monks/three-
  * [x] Basic Glyph (Mesh)
  * [x] Glyph [anchorX and anchorY](https://protectwise.github.io/troika/troika-three-text/#anchorx)
  * [x] How to debug example
- * [ ] Shader "chunkification"
+ * [x] Shader "chunkification"
  * [ ] Handles per lines and per character's index
- * [ ] API animation per character
+ * [x] API animation per character
  * [ ] API animation per line
  * [ ] Example with custom map texture (video)
  * [ ] Example with [alphaMap per character](https://thre-glyph-animate-tool.web.app/) example with tutorial.
  * [ ] Right-to-left layout
+ * [ ] Responsive : html context mirror layout
+ * [ ] How to generate a MSDF Bitmap font
+ * [ ] Font tweakings process
+ * [ ] [MTSDF support](https://github.com/Chlumsky/msdf-atlas-gen?tab=readme-ov-file)
  * [ ] Documentation
  * [x] Negate map support
 
