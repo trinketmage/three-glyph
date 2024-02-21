@@ -8,7 +8,8 @@ import { Pane } from 'tweakpane';
 class App {
   glyph = null;
   PARAMS = {
-    text: 'LOVERS',
+    // text: 'LOVERS',
+    text: 'LOVERS\nPOTION\nWITCH',
     color: 0xece9e3,
 
     anchor: {
@@ -128,6 +129,7 @@ class App {
 
     const basic = pane.addFolder({
       title: 'Basic',
+      expanded: false
     });
     
     basic
@@ -141,17 +143,6 @@ class App {
       )
       .on('change', () => {
         glyph.material.uniforms.color.value = new THREE.Color(PARAMS.color)
-      });
-    basic
-      .addBinding(
-        PARAMS,
-        'letterSpacing',
-        {
-          step: 1
-        }
-      )
-      .on('change', () => {
-        glyph.update({ letterSpacing: PARAMS.letterSpacing })
       });
 
     basic
@@ -168,29 +159,44 @@ class App {
         glyph.material.uniforms.opacity.value = PARAMS.opacity
       });
 
-    // pane
-    //   .addBinding(
-    //     PARAMS,
-    //     'lineHeight',
-    //     {
-    //       step: 1
-    //     }
-    //   )
-    //   .on('change', () => {
-    //     glyph.update({ lineHeight: PARAMS.lineHeight })
-    //   });
-    // pane
-    //   .addBinding(PARAMS, 'align', {
-    //     label: 'textAlign',
-    //     options: {
-    //       left: 'left',
-    //       center: 'center',
-    //       right: 'right'
-    //     },
-    //   })
-    //   .on('change', () => {
-    //     glyph.update({ align: PARAMS.align })
-    //   });
+    basic
+      .addBinding(
+        PARAMS,
+        'letterSpacing',
+        {
+          step: 1
+        }
+      )
+      .on('change', () => {
+        glyph.update({ letterSpacing: PARAMS.letterSpacing })
+      });
+
+    if (PARAMS.lineHeight) {
+      PARAMS.lineHeight = this.font.common.lineHeight
+      basic
+        .addBinding(
+          PARAMS,
+          'lineHeight',
+          {
+            step: 1
+          }
+        )
+        .on('change', () => {
+          glyph.update({ lineHeight: PARAMS.lineHeight })
+        });
+    }
+    basic
+      .addBinding(PARAMS, 'align', {
+        label: 'textAlign',
+        options: {
+          left: 'left',
+          center: 'center',
+          right: 'right'
+        },
+      })
+      .on('change', () => {
+        glyph.update({ align: PARAMS.align })
+      });
     basic
       .addBinding(PARAMS, 'anchor', {
         x: { step: 0.01, min: 0, max: 1 },
@@ -218,8 +224,12 @@ class App {
         });
     });
 
+    const progress = pane.addFolder({
+      title: 'Progress',
+      expanded: false
+    });
 
-    pane
+    progress
       .addBinding(
         PARAMS,
         'duration',
@@ -231,7 +241,7 @@ class App {
       .on('change', () => {
         glyph.material.uniforms.duration.value = PARAMS.duration
       });
-    pane
+    progress
       .addBinding(
         PARAMS,
         'stagger',
@@ -245,7 +255,7 @@ class App {
       });
 
     glyph.material.uniforms.progress.value = PARAMS.progress;
-    pane
+    progress
       .addBinding(
         PARAMS,
         'progress',

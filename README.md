@@ -71,7 +71,7 @@ npm install -S three-glyph
 
 The `class Glyph` extends the class [`Object3D`](https://threejs.org/docs/?q=Object3D#api/en/core/Object3D).
 
-### Supported properties
+### Properties
 - **`text` (required)**
 The text to layout. Newline characters (\n) will cause line breaks.
 - **`font` (required)**
@@ -107,6 +107,7 @@ The horizontal alignment of each line of text within the overall text bounding b
  * [ ] Font tweakings process
  * [ ] [MTSDF support](https://github.com/Chlumsky/msdf-atlas-gen?tab=readme-ov-file)
  * [ ] Documentation
+ * [x] LineHeight bug fix
  * [x] Negate map support
 
 ## License

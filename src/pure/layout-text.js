@@ -99,6 +99,7 @@ class TextLayout {
         const descender = lineHeight - baseline;
         const letterSpacing = options.letterSpacing || 0;
         const height = lineHeight * lines.length - descender;
+        console.log(lineHeight, font.common.lineHeight);
         const align = getAlignType(this._options.align);
 
 
@@ -112,7 +113,7 @@ class TextLayout {
         this._lineHeight = lineHeight;
         this._ascender = lineHeight - descender - this._xHeight;
         // draw text along baseline
-        // y -= height;
+        y += (font.common.lineHeight - lineHeight) * 0.5;
 
         let wordIndex = 0;
         let letterIndex = 0;
