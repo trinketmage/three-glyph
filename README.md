@@ -70,8 +70,7 @@ npm install -S three-glyph
 ```
 
 ### Supported properties
-
-- **<font color="var(--color-prettylights-syntax-constant)">`text`</font> (required)**
+- **`text` (required)**
 The text to layout. Newline characters (\n) will cause line breaks.
 - **`font` (required)**
 The BMFont definition which holds chars, kernings, etc..
