@@ -70,20 +70,20 @@ npm install -S three-glyph
 ```
 
 ### Supported properties
-- `text` (required)
+- **`text` (required)**
 The text to layout. Newline characters (\n) will cause line breaks.
-- `font` (required)
+- **`font` (required)**
 The BMFont definition which holds chars, kernings, etc..
-- `map` (required)
+- **`map` (required)**
 The texture atlas containing our glyphs.
-- `width` 
+- **`width`**
 The desired width of the text box, causes word-wrapping and clipping in "pre" mode. Leave as undefined to remove word-wrapping (default behaviour).
-- `letterSpacing`
+- **`letterSpacing`**
 The letter spacing in pixels (default: `0`).
-- `lineHeight` 
+- **`lineHeight`**
 The line height in pixels (default to `font.common.lineHeight`).
-- `textAlign` 
-The horizontal alignment of each line of text within the overall text bounding box. Can be one of 'left', 'right' or 'center'.
+- **`textAlign`**
+The horizontal alignment of each line of text within the overall text bounding box. Can be one of `left`, `right` or `center`.
 
 ## Roadmap
  * [x] Basic GlyphGeometry
