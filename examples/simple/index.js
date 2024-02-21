@@ -9,7 +9,7 @@ class App {
   glyph = null;
   PARAMS = {
     // text: 'LOVERS',
-    text: 'LOVERS\nPOTION\nWITCH',
+    text: 'LOVERS\nSTORY',
     color: 0xece9e3,
 
     anchor: {
@@ -127,6 +127,15 @@ class App {
         glyph.update({ text: PARAMS.text })
       });
 
+
+    const updateGlyph = () => {
+      glyph.update({
+        letterSpacing: PARAMS.letterSpacing,
+        lineHeight: PARAMS.lineHeight,
+        align: PARAMS.align,
+        
+      })
+    }
     const basic = pane.addFolder({
       title: 'Basic',
       expanded: false
@@ -168,7 +177,7 @@ class App {
         }
       )
       .on('change', () => {
-        glyph.update({ letterSpacing: PARAMS.letterSpacing })
+        updateGlyph();
       });
 
     if (PARAMS.lineHeight) {
@@ -182,7 +191,7 @@ class App {
           }
         )
         .on('change', () => {
-          glyph.update({ lineHeight: PARAMS.lineHeight })
+          updateGlyph();
         });
     }
     basic
@@ -195,7 +204,7 @@ class App {
         },
       })
       .on('change', () => {
-        glyph.update({ align: PARAMS.align })
+        updateGlyph();
       });
     basic
       .addBinding(PARAMS, 'anchor', {
@@ -205,7 +214,7 @@ class App {
       .on('change', () => {
         const { x, y } = PARAMS.anchor
         glyph.anchor.set(x, y)
-        glyph.update();
+        updateGlyph();
       });
     const folder = basic.addFolder({
       title: "Glyph presets",
