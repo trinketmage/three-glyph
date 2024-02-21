@@ -107,6 +107,7 @@ The horizontal alignment of each line of text within the overall text bounding b
  * [ ] Font tweakings process
  * [ ] [MTSDF support](https://github.com/Chlumsky/msdf-atlas-gen?tab=readme-ov-file)
  * [ ] Documentation
+ * [ ] LineHeight bug fix
  * [x] Negate map support
 
 ## License
