@@ -9,6 +9,7 @@ class App {
   glyph = null;
   PARAMS = {
     text: 'LOVERS',
+    // text: 'LOVERS\nPOTION\nWITCH',
     color: 0xece9e3,
 
     anchor: {
