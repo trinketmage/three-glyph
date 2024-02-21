@@ -69,7 +69,7 @@ npm install -S three-glyph
   scene.add(glyph);
 ```
 
-The `class Glyph` extends the class [`Object3D`](https://threejs.org/docs/?q=Object3D#api/en/core/Object3D).
+The class `Glyph` extends the class [`Object3D`](https://threejs.org/docs/?q=Object3D#api/en/core/Object3D).
 
 ### Properties
 - **`text` (required)**
