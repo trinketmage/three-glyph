@@ -109,6 +109,7 @@ The horizontal alignment of each line of text within the overall text bounding b
 * [ ] Documentation
  * [x] LineHeight bug fix
  * [x] Negate map support
+* [ ] Writing the history of text rendering (resources are welcome at tranremi@live.fr).
 
 ## License
 
