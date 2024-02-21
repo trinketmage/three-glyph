@@ -1,0 +1,1 @@
+https://www.reddit.com/r/gamedev/comments/4ij5ih/new_realtime_text_rendering_technique_based_on/
