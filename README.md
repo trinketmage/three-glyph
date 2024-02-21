@@ -69,6 +69,8 @@ npm install -S three-glyph
   scene.add(glyph);
 ```
 
+The `class Glyph` extends the class [`Object3D`](https://threejs.org/docs/?q=Object3D#api/en/core/Object3D).
+
 ### Supported properties
 - **`text` (required)**
 The text to layout. Newline characters (\n) will cause line breaks.
