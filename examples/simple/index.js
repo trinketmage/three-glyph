@@ -129,7 +129,7 @@ class App {
 
     const basic = pane.addFolder({
       title: 'Basic',
-      expanded: true
+      expanded: false
     });
     
     basic
