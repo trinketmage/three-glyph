@@ -99,7 +99,6 @@ class TextLayout {
         const descender = lineHeight - baseline;
         const letterSpacing = options.letterSpacing || 0;
         const height = lineHeight * lines.length - descender;
-        console.log(lineHeight, font.common.lineHeight);
         const align = getAlignType(this._options.align);
 
 
