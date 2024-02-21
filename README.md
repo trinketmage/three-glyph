@@ -105,8 +105,8 @@ The horizontal alignment of each line of text within the overall text bounding b
  * [ ] Responsive : html context mirror layout
  * [ ] How to generate a MSDF Bitmap font
  * [ ] Font tweakings process
- * [ ] [MTSDF support](https://github.com/Chlumsky/msdf-atlas-gen?tab=readme-ov-file) ([it's a real thing](https://pixijs.download/dev/docs/PIXI.BitmapText.html)), [rust ref](https://docs.rs/msdf/latest/msdf/struct.MTSDF.html)
- * [ ] Documentation
+ * [ ] [MTSDF support](https://github.com/Chlumsky/msdf-atlas-gen?tab=readme-ov-file) ([it's a real thing](https://pixijs.download/dev/docs/PIXI.BitmapText.html)), [rust doc](https://docs.rs/msdf/latest/msdf/struct.MTSDF.html), [article](https://badecho.com/index.php/2023/09/24/msdf-fonts/)
+* [ ] Documentation
  * [x] LineHeight bug fix
  * [x] Negate map support
 
