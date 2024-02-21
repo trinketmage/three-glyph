@@ -86,7 +86,7 @@ npm install -S three-glyph
  * [ ] Responsive : html context mirror layout
  * [ ] How to generate a MSDF Bitmap font
  * [ ] Font tweakings process
- * [ ] MTSDF support
+ * [ ] [MTSDF support](https://github.com/Chlumsky/msdf-atlas-gen?tab=readme-ov-file)
  * [ ] Documentation
  * [x] Negate map support
 
