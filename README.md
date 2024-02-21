@@ -15,6 +15,7 @@ MSDF Bitmap Fonts implementation for three.js.
 ES6 adaptation of [three-bmfont-text](https://github.com/Experience-Monks/three-bmfont-text) and more..
 
 ## Context
+While [creating text](https://threejs.org/docs/#manual/en/introduction/Creating-text) in [three.js](https://threejs.org/docs/?q=text#examples/en/geometries/TextGeometry) is straightforward, achieving both high fidelity and good performance can prove to be a complex task.
 
 Signed Distance Fields (SDF) are a method of reproducing vector shapes from a texture representation, popularized in [this paper by Valve](https://steamcdn-a.akamaihd.net/apps/valve/2007/SIGGRAPH2007_AlphaTestedMagnification.pdf). The integration of signed distance fields into [AngelCode BMFont files](https://www.angelcode.com/products/bmfont/) enables developers to create high-quality bitmap fonts with smooth, scalable outlines in a wide range of applications, offering both performance and visual fidelity benefits.
 
@@ -67,6 +68,22 @@ npm install -S three-glyph
   });
   scene.add(glyph);
 ```
+
+### Supported properties
+- **`text` (required)**
+The text to layout. Newline characters (\n) will cause line breaks.
+- **`font` (required)**
+The BMFont definition which holds chars, kernings, etc..
+- **`map` (required)**
+The texture atlas containing our glyphs.
+- **`width`**
+The desired width of the text box, causes word-wrapping and clipping in "pre" mode. Leave as undefined to remove word-wrapping (default behaviour).
+- **`letterSpacing`**
+The letter spacing in pixels (default: `0`).
+- **`lineHeight`**
+The line height in pixels (default to `font.common.lineHeight`).
+- **`textAlign`**
+The horizontal alignment of each line of text within the overall text bounding box. Can be one of `left`, `right` or `center`.
 
 ## Roadmap
  * [x] Basic GlyphGeometry
