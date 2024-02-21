@@ -8,8 +8,8 @@ import { Pane } from 'tweakpane';
 class App {
   glyph = null;
   PARAMS = {
-    text: 'LOVERS',
-    // text: 'LOVERS\nPOTION\nWITCH',
+    // text: 'LOVERS',
+    text: 'LOVERS\nPOTION\nWITCH',
     color: 0xece9e3,
 
     anchor: {
@@ -172,6 +172,7 @@ class App {
       });
 
     if (PARAMS.lineHeight) {
+      PARAMS.lineHeight = this.font.common.lineHeight
       basic
         .addBinding(
           PARAMS,
@@ -184,18 +185,18 @@ class App {
           glyph.update({ lineHeight: PARAMS.lineHeight })
         });
     }
-    // pane
-    //   .addBinding(PARAMS, 'align', {
-    //     label: 'textAlign',
-    //     options: {
-    //       left: 'left',
-    //       center: 'center',
-    //       right: 'right'
-    //     },
-    //   })
-    //   .on('change', () => {
-    //     glyph.update({ align: PARAMS.align })
-    //   });
+    basic
+      .addBinding(PARAMS, 'align', {
+        label: 'textAlign',
+        options: {
+          left: 'left',
+          center: 'center',
+          right: 'right'
+        },
+      })
+      .on('change', () => {
+        glyph.update({ align: PARAMS.align })
+      });
     basic
       .addBinding(PARAMS, 'anchor', {
         x: { step: 0.01, min: 0, max: 1 },
