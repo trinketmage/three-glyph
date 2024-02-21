@@ -16,6 +16,8 @@ ES6 adaptation of [three-bmfont-text](https://github.com/Experience-Monks/three-
 
 ## Context
 
+Creating text in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-text) is easy but having high fidelity and good performance is hard.
+
 Signed Distance Fields (SDF) are a method of reproducing vector shapes from a texture representation, popularized in [this paper by Valve](https://steamcdn-a.akamaihd.net/apps/valve/2007/SIGGRAPH2007_AlphaTestedMagnification.pdf). The integration of signed distance fields into [AngelCode BMFont files](https://www.angelcode.com/products/bmfont/) enables developers to create high-quality bitmap fonts with smooth, scalable outlines in a wide range of applications, offering both performance and visual fidelity benefits.
 
 While SDFs offer efficient and high-quality rendering of simple shapes, Multi-channel Signed Distance Fields (MSDF) extend this capability to capture intricate details and sharp features in complex shapes, making them suitable for a wider range of applications, including text rendering, iconography, and graphic design.
