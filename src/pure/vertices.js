@@ -65,7 +65,7 @@ export const uvs = function uvs(glyphs) {
 };
 
 export const positions = function positions(glyphs) {
-  var positions = new Float32Array(glyphs.length * 4 * 2);
+  var positions = new Float32Array(glyphs.length * 4 * 3);
   var i = 0;
   glyphs.forEach(function(glyph) {
     var bitmap = glyph.data;
@@ -78,12 +78,16 @@ export const positions = function positions(glyphs) {
 
     positions[i++] = x + w;
     positions[i++] = y;
+    positions[i++] = 0;
     positions[i++] = x + w;
     positions[i++] = y + h;
+    positions[i++] = 0;
     positions[i++] = x;
     positions[i++] = y + h;
+    positions[i++] = 0;
     positions[i++] = x;
     positions[i++] = y;
+    positions[i++] = 0;
   });
   return positions;
 };

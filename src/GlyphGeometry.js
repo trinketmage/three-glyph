@@ -55,7 +55,7 @@ export default class GlyphGeometry extends BufferGeometry {
 
     this.setIndex(indices)
     this.setAttribute('index', new BufferAttribute(index, 1));
-    this.setAttribute('position', new BufferAttribute(positions, 2))
+    this.setAttribute('position', new BufferAttribute(positions, 3))
     this.setAttribute('uv', new BufferAttribute(uvs, 2))
     this.setAttribute('guv', new BufferAttribute(guvs, 2));
   }
