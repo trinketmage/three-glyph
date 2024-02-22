@@ -30,15 +30,14 @@ export const guvs = function guvs(glyphs, texWidth, texHeight, flipY) {
       v1 = (texHeight - bitmap.y) / texHeight;
       v0 = (texHeight - bh) / texHeight;
     }
-
-    uvs[i++] = u1;
-    uvs[i++] = v0;
-    uvs[i++] = u1;
-    uvs[i++] = v1;
     uvs[i++] = u0;
     uvs[i++] = v1;
     uvs[i++] = u0;
     uvs[i++] = v0;
+    uvs[i++] = u1;
+    uvs[i++] = v0;
+    uvs[i++] = u1;
+    uvs[i++] = v1;
   });
   return uvs;
 };
@@ -76,17 +75,17 @@ export const positions = function positions(glyphs) {
     var w = bitmap.width;
     var h = bitmap.height;
 
-    positions[i++] = x + w;
-    positions[i++] = y;
-    positions[i++] = 0;
-    positions[i++] = x + w;
-    positions[i++] = y + h;
-    positions[i++] = 0;
     positions[i++] = x;
     positions[i++] = y + h;
     positions[i++] = 0;
     positions[i++] = x;
     positions[i++] = y;
+    positions[i++] = 0;
+    positions[i++] = x + w;
+    positions[i++] = y;
+    positions[i++] = 0;
+    positions[i++] = x + w;
+    positions[i++] = y + h;
     positions[i++] = 0;
   });
   return positions;
