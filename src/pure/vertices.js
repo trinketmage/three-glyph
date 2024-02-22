@@ -30,15 +30,14 @@ export const guvs = function guvs(glyphs, texWidth, texHeight, flipY) {
       v1 = (texHeight - bitmap.y) / texHeight;
       v0 = (texHeight - bh) / texHeight;
     }
-
-    uvs[i++] = u1;
-    uvs[i++] = v0;
-    uvs[i++] = u1;
-    uvs[i++] = v1;
     uvs[i++] = u0;
     uvs[i++] = v1;
     uvs[i++] = u0;
     uvs[i++] = v0;
+    uvs[i++] = u1;
+    uvs[i++] = v0;
+    uvs[i++] = u1;
+    uvs[i++] = v1;
   });
   return uvs;
 };
@@ -65,7 +64,7 @@ export const uvs = function uvs(glyphs) {
 };
 
 export const positions = function positions(glyphs) {
-  var positions = new Float32Array(glyphs.length * 4 * 2);
+  var positions = new Float32Array(glyphs.length * 4 * 3);
   var i = 0;
   glyphs.forEach(function(glyph) {
     var bitmap = glyph.data;
@@ -76,14 +75,18 @@ export const positions = function positions(glyphs) {
     var w = bitmap.width;
     var h = bitmap.height;
 
-    positions[i++] = x + w;
-    positions[i++] = y;
-    positions[i++] = x + w;
-    positions[i++] = y + h;
     positions[i++] = x;
     positions[i++] = y + h;
+    positions[i++] = 0;
     positions[i++] = x;
     positions[i++] = y;
+    positions[i++] = 0;
+    positions[i++] = x + w;
+    positions[i++] = y;
+    positions[i++] = 0;
+    positions[i++] = x + w;
+    positions[i++] = y + h;
+    positions[i++] = 0;
   });
   return positions;
 };

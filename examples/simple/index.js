@@ -5,11 +5,14 @@ import { Glyph, GlyphGeometry, GlyphMaterial } from '../../src/index.js'
 
 import { Pane } from 'tweakpane';
 
+
+import { VertexNormalsHelper } from 'three/addons/helpers/VertexNormalsHelper.js';
+
 class App {
   glyph = null;
   PARAMS = {
     // text: 'LOVERS',
-    text: 'LOVERS\nPOTION\nWITCH',
+    text: 'LOVERS\nSTORY.-',
     color: 0xece9e3,
 
     anchor: {
@@ -22,7 +25,7 @@ class App {
     opacity: 1,
     lineHeight: 1,
 
-    progress: 0.5,
+    progress: 1,
     duration: 1,
     stagger: 0.1,
   };
@@ -102,6 +105,10 @@ class App {
 
     glyph.center();
     scene.add(glyph);
+    glyph.children[0].geometry.computeVertexNormals();
+
+    const helper = new VertexNormalsHelper( glyph.children[0], 1, 0xff0000 );
+    scene.add(helper);
     
     this.glyph = glyph;
     this.setDebug()
@@ -127,6 +134,15 @@ class App {
         glyph.update({ text: PARAMS.text })
       });
 
+
+    const updateGlyph = () => {
+      glyph.update({
+        letterSpacing: PARAMS.letterSpacing,
+        lineHeight: PARAMS.lineHeight,
+        align: PARAMS.align,
+        
+      })
+    }
     const basic = pane.addFolder({
       title: 'Basic',
       expanded: false
@@ -168,7 +184,7 @@ class App {
         }
       )
       .on('change', () => {
-        glyph.update({ letterSpacing: PARAMS.letterSpacing })
+        updateGlyph();
       });
 
     if (PARAMS.lineHeight) {
@@ -182,7 +198,7 @@ class App {
           }
         )
         .on('change', () => {
-          glyph.update({ lineHeight: PARAMS.lineHeight })
+          updateGlyph();
         });
     }
     basic
@@ -195,7 +211,7 @@ class App {
         },
       })
       .on('change', () => {
-        glyph.update({ align: PARAMS.align })
+        updateGlyph();
       });
     basic
       .addBinding(PARAMS, 'anchor', {
@@ -205,7 +221,7 @@ class App {
       .on('change', () => {
         const { x, y } = PARAMS.anchor
         glyph.anchor.set(x, y)
-        glyph.update();
+        updateGlyph();
       });
     const folder = basic.addFolder({
       title: "Glyph presets",

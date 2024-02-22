@@ -69,7 +69,7 @@ npm install -S three-glyph
   scene.add(glyph);
 ```
 
-The `class Glyph` extends the class [`Object3D`](https://threejs.org/docs/?q=Object3D#api/en/core/Object3D).
+The class `Glyph` extends the class [`Object3D`](https://threejs.org/docs/?q=Object3D#api/en/core/Object3D).
 
 ### Properties
 - **`text` (required)**
@@ -105,10 +105,12 @@ The horizontal alignment of each line of text within the overall text bounding b
  * [ ] Responsive : html context mirror layout
  * [ ] How to generate a MSDF Bitmap font
  * [ ] Font tweakings process
- * [ ] [MTSDF support](https://github.com/Chlumsky/msdf-atlas-gen?tab=readme-ov-file)
- * [ ] Documentation
+ * [ ] [MTSDF support](https://github.com/Chlumsky/msdf-atlas-gen?tab=readme-ov-file) ([it's a real thing](https://pixijs.download/dev/docs/PIXI.BitmapText.html)), [rust doc](https://docs.rs/msdf/latest/msdf/struct.MTSDF.html), [rust quoting Chlumsky](https://docs.rs/msdf-sys/latest/msdf_sys/), [article](https://badecho.com/index.php/2023/09/24/msdf-fonts/)
+* [ ] Documentation
+ * [x] Normal compute fix
  * [x] LineHeight bug fix
  * [x] Negate map support
+* [ ] Writing the history of text rendering (resources are welcome at tranremi@live.fr).
 
 ## License
 
