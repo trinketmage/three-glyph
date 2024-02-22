@@ -28,7 +28,7 @@ To learn more about MSDFs you can read [Viktor Chlumský Master's thesis](https:
  * [Animation example](https://thre-glyph-animate-tool.web.app/)
 
 ### Advanced
- * [Per index](https://codepen.io/trinketmage/full/yLwwwKr)
+ * [Per index](https://codepen.io/trinketmage/full/yLwwwKr) ([read about staggers](https://gsap.com/resources/getting-started/Staggers/), [source](https://github.com/trinketmage/sword))
  * [Transmission material](https://trinketmage.github.io/)
 
 ## Getting Started
