@@ -1,4 +1,4 @@
-import { Color, GLSL3, ShaderMaterial, UniformsUtils } from 'three'
+import { Color, GLSL3, ShaderMaterial, UniformsUtils, MathUtils } from 'three'
 
 import { defaultChunks, negateChunks, progressChunks } from './pure/chunks.js';
 
@@ -117,8 +117,8 @@ class GlyphMaterial extends ShaderMaterial {
 
 		// TODO refactory CacheKey
 		this.customProgramCacheKey = function() { 
-			const { addons = {} } = parameters;
-			return addons.negate;
+      return MathUtils.generateUUID();
+
 		}
     this.onBeforeCompile = shader => {
 			let { fragmentShader: fragment, vertexShader: vertex } = shader;
@@ -132,7 +132,7 @@ class GlyphMaterial extends ShaderMaterial {
 	computeChunks(parameters) {
 		const { addons = {} } = parameters;
 		const { negate, progress, shaderChunks } = addons;
-		this.chunks = defaultChunks;
+		this.chunks = Object.assign({}, defaultChunks);
 
 		if (negate) {
 			Object.assign(this.chunks, negateChunks);
