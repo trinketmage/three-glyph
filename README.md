@@ -111,6 +111,8 @@ The horizontal alignment of each line of text within the overall text bounding b
  * [x] Normal compute fix
  * [x] LineHeight bug fix
  * [x] Negate map support
+ * [ ] WebGPU support
+ * [ ] `Glpyh.clone()` bug fix
  * [ ] Writing the history of text rendering (resources are welcome at tranremi@live.fr).
 
 ## License
