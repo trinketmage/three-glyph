@@ -4,7 +4,7 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { Glyph, GlyphGeometry, GlyphMaterial } from '../../src/index.js'
 
 import { Pane } from 'tweakpane';
-
+import * as TextareaPlugin from "@pangenerator/tweakpane-textarea-plugin";
 
 import { VertexNormalsHelper } from 'three/addons/helpers/VertexNormalsHelper.js';
 
@@ -12,7 +12,7 @@ class App {
   glyph = null;
   PARAMS = {
     // text: 'LOVERS',
-    text: 'LOVERS\nSTORY.-',
+    text: 'LOVERS STORY. -LOVERS STORY. -LOVERS STORY.',
     color: 0xece9e3,
 
     anchor: {
@@ -39,6 +39,7 @@ class App {
   textureLoader = new THREE.TextureLoader(this.manager);
   
   constructor() {
+    this.pane.registerPlugin(TextareaPlugin);
     this.fontLoader.load(
       'https://raw.githubusercontent.com/trinketmage/three-glyph/main/examples/simple/Love.json',
       ( raw ) => {
@@ -129,7 +130,7 @@ class App {
   setDebug() {
     const { pane, PARAMS, glyph } = this;
     pane
-      .addBinding(PARAMS, 'text')
+      .addBinding(PARAMS, 'text', { view: 'textarea' })
       .on('change', () => {
         glyph.update({ text: PARAMS.text })
       });

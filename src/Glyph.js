@@ -24,6 +24,7 @@ class Glyph extends Object3D {
 
       geometry,
       material,
+      width,
 
       addons
     } = params;
@@ -33,7 +34,8 @@ class Glyph extends Object3D {
     this.geometry = geometry || new GlyphGeometry({
       text,
       font,
-      letterSpacing
+      letterSpacing,
+      width,
     });
 
     if (material && material.uniforms.map) {
