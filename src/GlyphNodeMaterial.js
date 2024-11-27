@@ -12,7 +12,13 @@ import {
     attribute,
     fwidth,
     clamp,
+    min,
+    max
 } from 'three/tsl';
+
+export var median = Fn(([r, g, b]) => {
+    return max(min(r, g), min(max(r, g), b));
+});
 
 export var sdGlyph = Fn(([sample]) => {
     var sd = median(sample.r, sample.g, sample.b).sub(0.5);
