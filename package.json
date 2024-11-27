@@ -3,6 +3,10 @@
   "version": "0.0.27",
   "description": "Provide geometry and material in THREE.js for MSDF (multi-channel signed distance fields) glyph and more",
   "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./tsl": "./src/tsl.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite ./examples/simple",
@@ -45,7 +49,7 @@
   "homepage": "https://github.com/trinketmage/three-glyph#readme",
   "dependencies": {
     "quad-indices": "^2.0.1",
-    "three": "^0.161.0",
+    "three": "^0.170.0",
     "word-wrapper": "^1.0.7"
   },
   "devDependencies": {
