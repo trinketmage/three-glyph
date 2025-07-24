@@ -5,7 +5,8 @@ import {
 } from 'three/webgpu'
 
 
-import GlyphGeometry from './GlyphGeometry';
+import GlyphNodeGeometry from './GlyphNodeGeometry';
+import GlyphNodeMaterial from './GlyphNodeMaterial';
 
 class Glyph extends Object3D {
 
@@ -18,6 +19,7 @@ class Glyph extends Object3D {
       text,
       font,
       letterSpacing,
+      map,
 
       geometry,
       material,
@@ -28,16 +30,16 @@ class Glyph extends Object3D {
 
     this.addons = addons;
 
-    this.geometry = geometry || new GlyphGeometry({
+    this.geometry = geometry || new GlyphNodeGeometry({
       text,
       font,
       letterSpacing,
       width,
     });
 
-    if (material) {
-      this.material = material;
-    }
+    this.material = material || new GlyphNodeMaterial({
+      map,
+    })
     
     this.mesh = new Mesh(this.geometry, this.material);
 
