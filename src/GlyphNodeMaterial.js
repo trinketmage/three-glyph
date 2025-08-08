@@ -1,4 +1,4 @@
-import { NodeMaterial } from "three";
+import { NodeMaterial } from "three/webgpu";
 
 import {
     vec2,

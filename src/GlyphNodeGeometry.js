@@ -11,7 +11,7 @@ import { createLayout } from './pure/layout-text'
 import * as vertices from './pure/vertices'
 import { computeBox, computeSphere } from './pure/utils'
 
-export default class GlyphGeometry extends BufferGeometry {
+export default class GlyphNodeGeometry extends BufferGeometry {
   constructor(opt){
     super(opt);
     this._opt = Object.assign({}, opt)
